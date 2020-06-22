@@ -1,6 +1,14 @@
 *.py[cod]
 *.log
 *.gz
+*.aux
+*.pdf
+*.dvi
+.Rdata
+.Rhistory
+__*
+.ipynb_checkpoint
+*~
 # C extensions
 *.so
 

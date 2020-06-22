@@ -1,0 +1,867 @@
+    
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k+kn}{import} \PY{n}{Image}
+\end{Verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} create a new git repository called gitdemo:}
+        \PY{o}{!}git init gitdemo
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Reinitialized existing Git repository in /home/rob/Desktop/scientific-python-lectures/gitdemo/.git/
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{o}{!}git clone https://github.com/qutip/qutip
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Cloning into 'qutip'{\ldots}
+remote: Counting objects: 7425, done.
+remote: Compressing objects: 100\% (2013/2013), done.
+remote: Total 7425 (delta 5386), reused 7420 (delta 5381)
+Receiving objects: 100\% (7425/7425), 2.25 MiB | 696 KiB/s, done.
+Resolving deltas: 100\% (5386/5386), done.
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{o}{!}git clone gitdemo gitdemo2
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Cloning into 'gitdemo2'{\ldots}
+warning: You appear to have cloned an empty repository.
+done.
+
+    \end{Verbatim}
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{o}{!}git status
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\# On branch master
+\#
+\# Initial commit
+\#
+\# Untracked files:
+\#   (use "git add <file>{\ldots}" to include in what will be committed)
+\#
+\#	Lecture-7-Revision-Control-Software.ipynb
+nothing added to commit but untracked files present (use "git add" to track)
+
+    \end{Verbatim}
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{o}{\PYZpc{}\PYZpc{}file} README
+         
+         \PY{n}{A} \PY{n}{file} \PY{k}{with} \PY{n}{information} \PY{n}{about} \PY{n}{the} \PY{n}{gitdemo} \PY{n}{repository}\PY{o}{.}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Writing README
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{o}{!}git status
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\# On branch master
+\#
+\# Initial commit
+\#
+\# Untracked files:
+\#   (use "git add <file>{\ldots}" to include in what will be committed)
+\#
+\#	Lecture-7-Revision-Control-Software.ipynb
+\#	README
+nothing added to commit but untracked files present (use "git add" to track)
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{o}{!}git add README
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}38}]:} \PY{o}{!}git status
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\# On branch master
+\#
+\# Initial commit
+\#
+\# Changes to be committed:
+\#   (use "git rm --cached <file>{\ldots}" to unstage)
+\#
+\#	new file:   README
+\#
+\# Untracked files:
+\#   (use "git add <file>{\ldots}" to include in what will be committed)
+\#
+\#	Lecture-7-Revision-Control-Software.ipynb
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}39}]:} \PY{o}{!}git commit \PYZhy{}m \PY{l+s+s2}{\PYZdq{}Added a README file\PYZdq{}} README
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[master (root-commit) 1f26ad6] Added a README file
+ 1 file changed, 2 insertions(+)
+ create mode 100644 README
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}40}]:} \PY{o}{!}git add Lecture\PYZhy{}7\PYZhy{}Revision\PYZhy{}Control\PYZhy{}Software.ipynb
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}41}]:} \PY{o}{!}git commit \PYZhy{}m \PY{l+s+s2}{\PYZdq{}added notebook file\PYZdq{}} Lecture\PYZhy{}7\PYZhy{}Revision\PYZhy{}Control\PYZhy{}Software.ipynb
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[master da8b6e9] added notebook file
+ 1 file changed, 2047 insertions(+)
+ create mode 100644 Lecture-7-Revision-Control-Software.ipynb
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}42}]:} \PY{o}{!}git status 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\# On branch master
+nothing to commit (working directory clean)
+
+    \end{Verbatim}
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}43}]:} \PY{o}{\PYZpc{}\PYZpc{}file} README
+         
+         \PY{n}{A} \PY{n}{file} \PY{k}{with} \PY{n}{information} \PY{n}{about} \PY{n}{the} \PY{n}{gitdemo} \PY{n}{repository}\PY{o}{.}
+         
+         \PY{n}{A} \PY{n}{new} \PY{n}{line}\PY{o}{.}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting README
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}44}]:} \PY{o}{!}git status
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\# On branch master
+\# Changes not staged for commit:
+\#   (use "git add <file>{\ldots}" to update what will be committed)
+\#   (use "git checkout -- <file>{\ldots}" to discard changes in working directory)
+\#
+\#	modified:   README
+\#
+no changes added to commit (use "git add" and/or "git commit -a")
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}45}]:} \PY{o}{!}git commit \PYZhy{}m \PY{l+s+s2}{\PYZdq{}added one more line in README\PYZdq{}} README
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[master b6db712] added one more line in README
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}46}]:} \PY{o}{!}git status
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\# On branch master
+nothing to commit (working directory clean)
+
+    \end{Verbatim}
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}47}]:} \PY{o}{\PYZpc{}\PYZpc{}file} tmpfile
+         
+         \PY{n}{A} \PY{n}{short}\PY{o}{\PYZhy{}}\PY{n}{lived} \PY{n}{file}\PY{o}{.}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Writing tmpfile
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}48}]:} \PY{o}{!}git add tmpfile
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}49}]:} \PY{o}{!}git commit \PYZhy{}m \PY{l+s+s2}{\PYZdq{}adding file tmpfile\PYZdq{}} tmpfile 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[master 44ed840] adding file tmpfile
+ 1 file changed, 2 insertions(+)
+ create mode 100644 tmpfile
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}51}]:} \PY{o}{!}git rm tmpfile
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+rm 'tmpfile'
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}52}]:} \PY{o}{!}git commit \PYZhy{}m \PY{l+s+s2}{\PYZdq{}remove file tmpfile\PYZdq{}} tmpfile 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[master a9dc0a4] remove file tmpfile
+ 1 file changed, 2 deletions(-)
+ delete mode 100644 tmpfile
+
+    \end{Verbatim}
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}53}]:} \PY{o}{!}git log
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+commit a9dc0a4b68e8b1b6d973be8f7e7b8f1c92393c17
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:41 2012 +0100
+
+    remove file tmpfile
+
+commit 44ed840422571c62db55eabd8e8768be6c7784e4
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:31 2012 +0100
+
+    adding file tmpfile
+
+commit b6db712506a45a68001c768a6cf6e15e11c62f89
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:26 2012 +0100
+
+    added one more line in README
+
+commit da8b6e92b34fe3838873bdd27a94402ecc121c43
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:20 2012 +0100
+
+    added notebook file
+
+commit 1f26ad648a791e266fbb951ef5c49b8d990e6461
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:19 2012 +0100
+
+    Added a README file
+
+    \end{Verbatim}
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}54}]:} \PY{o}{\PYZpc{}\PYZpc{}file} README
+         
+         \PY{n}{A} \PY{n}{file} \PY{k}{with} \PY{n}{information} \PY{n}{about} \PY{n}{the} \PY{n}{gitdemo} \PY{n}{repository}\PY{o}{.}
+         
+         \PY{n}{README} \PY{n}{files} \PY{n}{usually} \PY{n}{contains} \PY{n}{installation} \PY{n}{instructions}\PY{p}{,} \PY{o+ow}{and} \PY{n}{information} \PY{n}{about} \PY{n}{how} \PY{n}{to} \PY{n}{get} \PY{n}{started} \PY{n}{using} \PY{n}{the} \PY{n}{software} \PY{p}{(}\PY{k}{for} \PY{n}{example}\PY{p}{)}\PY{o}{.}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting README
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}55}]:} \PY{o}{!}git diff README
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+diff --git a/README b/README
+index 4f51868..d3951c6 100644
+--- a/README
++++ b/README
+@@ -1,4 +1,4 @@
+ 
+ A file with information about the gitdemo repository.
+ 
+-A new line.
+\textbackslash{} No newline at end of file
++README files usually contains installation instructions, and information about how to get started using the software (for example).
+\textbackslash{} No newline at end of file
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{Image}\PY{p}{(}\PY{n}{filename}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{images/github\PYZhy{}diff.png}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}24}]:}
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}58}]:} \PY{o}{!}git checkout \PYZhy{}\PYZhy{} README
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}59}]:} \PY{o}{!}git status
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\# On branch master
+nothing to commit (working directory clean)
+
+    \end{Verbatim}
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}60}]:} \PY{o}{!}git log
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+commit a9dc0a4b68e8b1b6d973be8f7e7b8f1c92393c17
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:41 2012 +0100
+
+    remove file tmpfile
+
+commit 44ed840422571c62db55eabd8e8768be6c7784e4
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:31 2012 +0100
+
+    adding file tmpfile
+
+commit b6db712506a45a68001c768a6cf6e15e11c62f89
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:26 2012 +0100
+
+    added one more line in README
+
+commit da8b6e92b34fe3838873bdd27a94402ecc121c43
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:20 2012 +0100
+
+    added notebook file
+
+commit 1f26ad648a791e266fbb951ef5c49b8d990e6461
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:19 2012 +0100
+
+    Added a README file
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}61}]:} \PY{o}{!}git checkout 1f26ad648a791e266fbb951ef5c49b8d990e6461
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Note: checking out '1f26ad648a791e266fbb951ef5c49b8d990e6461'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b new\_branch\_name
+
+HEAD is now at 1f26ad6{\ldots} Added a README file
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}62}]:} \PY{o}{!}cat README
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+A file with information about the gitdemo repository.
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}63}]:} \PY{o}{!}git checkout master 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Previous HEAD position was 1f26ad6{\ldots} Added a README file
+Switched to branch 'master'
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}64}]:} \PY{o}{!}cat README
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+A file with information about the gitdemo repository.
+
+A new line.
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}65}]:} \PY{o}{!}git status
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\# On branch master
+nothing to commit (working directory clean)
+
+    \end{Verbatim}
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}66}]:} \PY{o}{!}git log
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+commit a9dc0a4b68e8b1b6d973be8f7e7b8f1c92393c17
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:41 2012 +0100
+
+    remove file tmpfile
+
+commit 44ed840422571c62db55eabd8e8768be6c7784e4
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:31 2012 +0100
+
+    adding file tmpfile
+
+commit b6db712506a45a68001c768a6cf6e15e11c62f89
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:26 2012 +0100
+
+    added one more line in README
+
+commit da8b6e92b34fe3838873bdd27a94402ecc121c43
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:20 2012 +0100
+
+    added notebook file
+
+commit 1f26ad648a791e266fbb951ef5c49b8d990e6461
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:19 2012 +0100
+
+    Added a README file
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}67}]:} \PY{o}{!}git tag \PYZhy{}a demotag1 \PYZhy{}m \PY{l+s+s2}{\PYZdq{}Code used for this and that purpuse\PYZdq{}} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}68}]:} \PY{o}{!}git tag \PYZhy{}l 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+demotag1
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}69}]:} \PY{o}{!}git show demotag1
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+tag demotag1
+Tagger: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:57:25 2012 +0100
+
+Code used for this and that purpuse
+
+commit a9dc0a4b68e8b1b6d973be8f7e7b8f1c92393c17
+Author: Robert Johansson <jrjohansson@gmail.com>
+Date:   Mon Dec 10 06:54:41 2012 +0100
+
+    remove file tmpfile
+
+diff --git a/tmpfile b/tmpfile
+deleted file mode 100644
+index ee4c1e7..0000000
+--- a/tmpfile
++++ /dev/null
+@@ -1,2 +0,0 @@
+-
+-A short-lived file.
+\textbackslash{} No newline at end of file
+
+    \end{Verbatim}
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}70}]:} \PY{o}{!}git branch expr1 
+\end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}71}]:} \PY{o}{!}git branch
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+  expr1
+* master
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}81}]:} \PY{o}{!}git checkout expr1
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Switched to branch 'expr1'
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}74}]:} \PY{o}{\PYZpc{}\PYZpc{}file} README
+         
+         \PY{n}{A} \PY{n}{file} \PY{k}{with} \PY{n}{information} \PY{n}{about} \PY{n}{the} \PY{n}{gitdemo} \PY{n}{repository}\PY{o}{.}
+         
+         \PY{n}{README} \PY{n}{files} \PY{n}{usually} \PY{n}{contains} \PY{n}{installation} \PY{n}{instructions}\PY{p}{,} \PY{o+ow}{and} \PY{n}{information} \PY{n}{about} \PY{n}{how} \PY{n}{to} \PY{n}{get} \PY{n}{started} \PY{n}{using} \PY{n}{the} \PY{n}{software} \PY{p}{(}\PY{k}{for} \PY{n}{example}\PY{p}{)}\PY{o}{.}
+         
+         \PY{n}{Experimental} \PY{n}{addition}\PY{o}{.}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting README
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}76}]:} \PY{o}{!}git commit \PYZhy{}m \PY{l+s+s2}{\PYZdq{}added a line in expr1 branch\PYZdq{}} README
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[expr1 a6dc24f] added a line in expr1 branch
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}77}]:} \PY{o}{!}git branch
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+* expr1
+  master
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}78}]:} \PY{o}{!}git checkout master
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Switched to branch 'master'
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}79}]:} \PY{o}{!}git branch
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+  expr1
+* master
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}82}]:} \PY{o}{!}git checkout master
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Switched to branch 'master'
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}83}]:} \PY{o}{!}git merge expr1
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Updating a9dc0a4..a6dc24f
+Fast-forward
+ README |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}84}]:} \PY{o}{!}git branch 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+  expr1
+* master
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}85}]:} \PY{o}{!}git branch \PYZhy{}d expr1
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Deleted branch expr1 (was a6dc24f).
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}86}]:} \PY{o}{!}git branch
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+* master
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}88}]:} \PY{o}{!}cat README
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+A file with information about the gitdemo repository.
+
+README files usually contains installation instructions, and information about how to get started using the software (for example).
+
+Experimental addition.
+    \end{Verbatim}
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{o}{!}git remote
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+origin
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{o}{!}git remote show origin
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+* remote origin
+  Fetch URL: git@github.com:jrjohansson/scientific-python-lectures.git
+  Push  URL: git@github.com:jrjohansson/scientific-python-lectures.git
+  HEAD branch: master
+  Remote branch:
+    master tracked
+  Local branch configured for 'git pull':
+    master merges with remote master
+  Local ref configured for 'git push':
+    master pushes to master (up to date)
+
+    \end{Verbatim}
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{o}{!}git pull origin
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Already up-to-date.
+
+    \end{Verbatim}
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{o}{!}git status
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+\# On branch master
+\# Untracked files:
+\#   (use "git add <file>{\ldots}" to include in what will be committed)
+\#
+\#	Lecture-7-Revision-Control-Software.ipynb
+nothing added to commit but untracked files present (use "git add" to track)
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{o}{!}git add Lecture\PYZhy{}7\PYZhy{}Revision\PYZhy{}Control\PYZhy{}Software.ipynb
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{o}{!}git commit \PYZhy{}m \PY{l+s+s2}{\PYZdq{}added lecture notebook about RCS\PYZdq{}} Lecture\PYZhy{}7\PYZhy{}Revision\PYZhy{}Control\PYZhy{}Software.ipynb
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[master d0d6a70] added lecture notebook about RCS
+ 1 file changed, 2114 insertions(+)
+ create mode 100644 Lecture-7-Revision-Control-Software.ipynb
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{o}{!}git push
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100\% (3/3), done.
+Writing objects: 100\% (3/3), 118.94 KiB, done.
+Total 3 (delta 1), reused 0 (delta 0)
+To git@github.com:jrjohansson/scientific-python-lectures.git
+   2495af4..d0d6a70  master -> master
+
+    \end{Verbatim}
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{Image}\PY{p}{(}\PY{n}{filename}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{images/github\PYZhy{}project\PYZhy{}page.png}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}14}]:}
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{Image}\PY{p}{(}\PY{n}{filename}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{images/gitk.png}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}15}]:}
+
+
+
+

@@ -1,0 +1,983 @@
+    
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{o}{\PYZpc{}}\PY{k}{pylab} inline
+        \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k+kn}{import} \PY{n}{Image}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Populating the interactive namespace from numpy and matplotlib
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{Image}\PY{p}{(}\PY{n}{filename}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{images/optimizing\PYZhy{}what.png}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}2}]:}
+
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{o}{\PYZpc{}\PYZpc{}file} hellofortran.f
+        \PY{n}{C} \PY{n}{File}  \PY{n}{hellofortran}\PY{o}{.}\PY{n}{f}
+                \PY{n}{subroutine} \PY{n}{hellofortran} \PY{p}{(}\PY{n}{n}\PY{p}{)}
+                \PY{n}{integer} \PY{n}{n}
+               
+                \PY{n}{do} \PY{l+m+mi}{100} \PY{n}{i}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{n}
+                    \PY{n+nb}{print} \PY{o}{*}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Fortran says hello}\PY{l+s+s2}{\PYZdq{}}
+        \PY{l+m+mi}{100}     \PY{k}{continue}
+                \PY{n}{end}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting hellofortran.f
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{o}{!}f2py \PYZhy{}c \PYZhy{}m hellofortran hellofortran.f
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+running build
+running config\_cc
+unifing config\_cc, config, build\_clib, build\_ext, build commands --compiler options
+running config\_fc
+unifing config\_fc, config, build\_clib, build\_ext, build commands --fcompiler options
+running build\_src
+build\_src
+building extension "hellofortran" sources
+f2py options: []
+f2py:> /tmp/tmpz2IPjB/src.linux-x86\_64-2.7/hellofortranmodule.c
+creating /tmp/tmpz2IPjB/src.linux-x86\_64-2.7
+Reading fortran codes{\ldots}
+	Reading file 'hellofortran.f' (format:fix,strict)
+Post-processing{\ldots}
+	Block: hellofortran
+			Block: hellofortran
+Post-processing (stage 2){\ldots}
+Building modules{\ldots}
+	Building module "hellofortran"{\ldots}
+		Constructing wrapper function "hellofortran"{\ldots}
+		  hellofortran(n)
+	Wrote C/API module "hellofortran" to file "/tmp/tmpz2IPjB/src.linux-x86\_64-2.7/hellofortranmodule.c"
+  adding '/tmp/tmpz2IPjB/src.linux-x86\_64-2.7/fortranobject.c' to sources.
+  adding '/tmp/tmpz2IPjB/src.linux-x86\_64-2.7' to include\_dirs.
+copying /usr/lib/python2.7/dist-packages/numpy/f2py/src/fortranobject.c -> /tmp/tmpz2IPjB/src.linux-x86\_64-2.7
+copying /usr/lib/python2.7/dist-packages/numpy/f2py/src/fortranobject.h -> /tmp/tmpz2IPjB/src.linux-x86\_64-2.7
+build\_src: building npy-pkg config files
+running build\_ext
+customize UnixCCompiler
+customize UnixCCompiler using build\_ext
+customize Gnu95FCompiler
+Found executable /usr/bin/gfortran
+customize Gnu95FCompiler
+customize Gnu95FCompiler using build\_ext
+building 'hellofortran' extension
+compiling C sources
+C compiler: x86\_64-linux-gnu-gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
+
+creating /tmp/tmpz2IPjB/tmp
+creating /tmp/tmpz2IPjB/tmp/tmpz2IPjB
+creating /tmp/tmpz2IPjB/tmp/tmpz2IPjB/src.linux-x86\_64-2.7
+compile options: '-I/tmp/tmpz2IPjB/src.linux-x86\_64-2.7 -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'
+x86\_64-linux-gnu-gcc: /tmp/tmpz2IPjB/src.linux-x86\_64-2.7/hellofortranmodule.c
+In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
+                 from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
+                 from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/arrayobject.h:4,
+                 from /tmp/tmpz2IPjB/src.linux-x86\_64-2.7/fortranobject.h:13,
+                 from /tmp/tmpz2IPjB/src.linux-x86\_64-2.7/hellofortranmodule.c:17:
+/usr/lib/python2.7/dist-packages/numpy/core/include/numpy/npy\_1\_7\_deprecated\_api.h:15:2: warning: \#warning "Using deprecated NumPy API, disable it by " "\#defining NPY\_NO\_DEPRECATED\_API NPY\_1\_7\_API\_VERSION" [-Wcpp]
+ \#warning "Using deprecated NumPy API, disable it by " \textbackslash{}
+  \^{}
+x86\_64-linux-gnu-gcc: /tmp/tmpz2IPjB/src.linux-x86\_64-2.7/fortranobject.c
+In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
+                 from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
+                 from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/arrayobject.h:4,
+                 from /tmp/tmpz2IPjB/src.linux-x86\_64-2.7/fortranobject.h:13,
+                 from /tmp/tmpz2IPjB/src.linux-x86\_64-2.7/fortranobject.c:2:
+/usr/lib/python2.7/dist-packages/numpy/core/include/numpy/npy\_1\_7\_deprecated\_api.h:15:2: warning: \#warning "Using deprecated NumPy API, disable it by " "\#defining NPY\_NO\_DEPRECATED\_API NPY\_1\_7\_API\_VERSION" [-Wcpp]
+ \#warning "Using deprecated NumPy API, disable it by " \textbackslash{}
+  \^{}
+compiling Fortran sources
+Fortran f77 compiler: /usr/bin/gfortran -Wall -ffixed-form -fno-second-underscore -fPIC -O3 -funroll-loops
+Fortran f90 compiler: /usr/bin/gfortran -Wall -fno-second-underscore -fPIC -O3 -funroll-loops
+Fortran fix compiler: /usr/bin/gfortran -Wall -ffixed-form -fno-second-underscore -Wall -fno-second-underscore -fPIC -O3 -funroll-loops
+compile options: '-I/tmp/tmpz2IPjB/src.linux-x86\_64-2.7 -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'
+gfortran:f77: hellofortran.f
+/usr/bin/gfortran -Wall -Wall -shared /tmp/tmpz2IPjB/tmp/tmpz2IPjB/src.linux-x86\_64-2.7/hellofortranmodule.o /tmp/tmpz2IPjB/tmp/tmpz2IPjB/src.linux-x86\_64-2.7/fortranobject.o /tmp/tmpz2IPjB/hellofortran.o -lgfortran -o ./hellofortran.so
+Removing build directory /tmp/tmpz2IPjB
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{o}{\PYZpc{}\PYZpc{}file} hello.py
+        \PY{k+kn}{import} \PY{n+nn}{hellofortran}
+        
+        \PY{n}{hellofortran}\PY{o}{.}\PY{n}{hellofortran}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting hello.py
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{c+c1}{\PYZsh{} run the script}
+        \PY{o}{!}python hello.py
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ Fortran says hello
+ Fortran says hello
+ Fortran says hello
+ Fortran says hello
+ Fortran says hello
+ Fortran says hello
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{o}{\PYZpc{}\PYZpc{}file} dprod.f
+        
+               \PY{n}{subroutine} \PY{n}{dprod}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{n}\PY{p}{)}
+            
+               \PY{n}{double} \PY{n}{precision} \PY{n}{x}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{,} \PY{n}{y}
+               \PY{n}{y} \PY{o}{=} \PY{l+m+mf}{1.0}
+            
+               \PY{n}{do} \PY{l+m+mi}{100} \PY{n}{i}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{n}
+                   \PY{n}{y} \PY{o}{=} \PY{n}{y} \PY{o}{*} \PY{n}{x}\PY{p}{(}\PY{n}{i}\PY{p}{)}
+        \PY{l+m+mi}{100}    \PY{k}{continue}
+               \PY{n}{end}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting dprod.f
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{o}{!}rm \PYZhy{}f dprod.pyf
+        \PY{o}{!}f2py \PYZhy{}m dprod \PYZhy{}h dprod.pyf dprod.f
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Reading fortran codes{\ldots}
+	Reading file 'dprod.f' (format:fix,strict)
+Post-processing{\ldots}
+	Block: dprod
+\{\}
+In: :dprod:dprod.f:dprod
+vars2fortran: No typespec for argument "n".
+			Block: dprod
+Post-processing (stage 2){\ldots}
+Saving signatures to file "./dprod.pyf"
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{o}{!}cat dprod.pyf
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module dprod ! in 
+    interface  ! in :dprod
+        subroutine dprod(x,y,n) ! in :dprod:dprod.f
+            double precision dimension(n) :: x
+            double precision :: y
+            integer, optional,check(len(x)>=n),depend(x) :: n=len(x)
+        end subroutine dprod
+    end interface 
+end python module dprod
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{o}{\PYZpc{}\PYZpc{}file} dprod.pyf
+         \PY{n}{python} \PY{n}{module} \PY{n}{dprod} \PY{err}{!} \PY{o+ow}{in} 
+             \PY{n}{interface}  \PY{err}{!} \PY{o+ow}{in} \PY{p}{:}\PY{n}{dprod}
+                 \PY{n}{subroutine} \PY{n}{dprod}\PY{p}{(}\PY{n}{x}\PY{p}{,}\PY{n}{y}\PY{p}{,}\PY{n}{n}\PY{p}{)} \PY{err}{!} \PY{o+ow}{in} \PY{p}{:}\PY{n}{dprod}\PY{p}{:}\PY{n}{dprod}\PY{o}{.}\PY{n}{f}
+                     \PY{n}{double} \PY{n}{precision} \PY{n}{dimension}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{,} \PY{n}{intent}\PY{p}{(}\PY{o+ow}{in}\PY{p}{)} \PY{p}{:}\PY{p}{:} \PY{n}{x}
+                     \PY{n}{double} \PY{n}{precision}\PY{p}{,} \PY{n}{intent}\PY{p}{(}\PY{n}{out}\PY{p}{)} \PY{p}{:}\PY{p}{:} \PY{n}{y}
+                     \PY{n}{integer}\PY{p}{,} \PY{n}{optional}\PY{p}{,}\PY{n}{check}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{\PYZgt{}}\PY{o}{=}\PY{n}{n}\PY{p}{)}\PY{p}{,}\PY{n}{depend}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{,}\PY{n}{intent}\PY{p}{(}\PY{o+ow}{in}\PY{p}{)} \PY{p}{:}\PY{p}{:} \PY{n}{n}\PY{o}{=}\PY{n+nb}{len}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+                 \PY{n}{end} \PY{n}{subroutine} \PY{n}{dprod}
+             \PY{n}{end} \PY{n}{interface} 
+         \PY{n}{end} \PY{n}{python} \PY{n}{module} \PY{n}{dprod}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting dprod.pyf
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{o}{!}f2py \PYZhy{}c dprod.pyf dprod.f
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+running build
+running config\_cc
+unifing config\_cc, config, build\_clib, build\_ext, build commands --compiler options
+running config\_fc
+unifing config\_fc, config, build\_clib, build\_ext, build commands --fcompiler options
+running build\_src
+build\_src
+building extension "dprod" sources
+creating /tmp/tmpWyCvx1/src.linux-x86\_64-2.7
+f2py options: []
+f2py: dprod.pyf
+Reading fortran codes{\ldots}
+	Reading file 'dprod.pyf' (format:free)
+Post-processing{\ldots}
+	Block: dprod
+			Block: dprod
+Post-processing (stage 2){\ldots}
+Building modules{\ldots}
+	Building module "dprod"{\ldots}
+		Constructing wrapper function "dprod"{\ldots}
+		  y = dprod(x,[n])
+	Wrote C/API module "dprod" to file "/tmp/tmpWyCvx1/src.linux-x86\_64-2.7/dprodmodule.c"
+  adding '/tmp/tmpWyCvx1/src.linux-x86\_64-2.7/fortranobject.c' to sources.
+  adding '/tmp/tmpWyCvx1/src.linux-x86\_64-2.7' to include\_dirs.
+copying /usr/lib/python2.7/dist-packages/numpy/f2py/src/fortranobject.c -> /tmp/tmpWyCvx1/src.linux-x86\_64-2.7
+copying /usr/lib/python2.7/dist-packages/numpy/f2py/src/fortranobject.h -> /tmp/tmpWyCvx1/src.linux-x86\_64-2.7
+build\_src: building npy-pkg config files
+running build\_ext
+customize UnixCCompiler
+customize UnixCCompiler using build\_ext
+customize Gnu95FCompiler
+Found executable /usr/bin/gfortran
+customize Gnu95FCompiler
+customize Gnu95FCompiler using build\_ext
+building 'dprod' extension
+compiling C sources
+C compiler: x86\_64-linux-gnu-gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
+
+creating /tmp/tmpWyCvx1/tmp
+creating /tmp/tmpWyCvx1/tmp/tmpWyCvx1
+creating /tmp/tmpWyCvx1/tmp/tmpWyCvx1/src.linux-x86\_64-2.7
+compile options: '-I/tmp/tmpWyCvx1/src.linux-x86\_64-2.7 -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'
+x86\_64-linux-gnu-gcc: /tmp/tmpWyCvx1/src.linux-x86\_64-2.7/dprodmodule.c
+In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
+                 from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
+                 from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/arrayobject.h:4,
+                 from /tmp/tmpWyCvx1/src.linux-x86\_64-2.7/fortranobject.h:13,
+                 from /tmp/tmpWyCvx1/src.linux-x86\_64-2.7/dprodmodule.c:18:
+/usr/lib/python2.7/dist-packages/numpy/core/include/numpy/npy\_1\_7\_deprecated\_api.h:15:2: warning: \#warning "Using deprecated NumPy API, disable it by " "\#defining NPY\_NO\_DEPRECATED\_API NPY\_1\_7\_API\_VERSION" [-Wcpp]
+ \#warning "Using deprecated NumPy API, disable it by " \textbackslash{}
+  \^{}
+/tmp/tmpWyCvx1/src.linux-x86\_64-2.7/dprodmodule.c:111:12: warning: ‘f2py\_size’ defined but not used [-Wunused-function]
+ static int f2py\_size(PyArrayObject* var, {\ldots})
+            \^{}
+x86\_64-linux-gnu-gcc: /tmp/tmpWyCvx1/src.linux-x86\_64-2.7/fortranobject.c
+In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
+                 from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
+                 from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/arrayobject.h:4,
+                 from /tmp/tmpWyCvx1/src.linux-x86\_64-2.7/fortranobject.h:13,
+                 from /tmp/tmpWyCvx1/src.linux-x86\_64-2.7/fortranobject.c:2:
+/usr/lib/python2.7/dist-packages/numpy/core/include/numpy/npy\_1\_7\_deprecated\_api.h:15:2: warning: \#warning "Using deprecated NumPy API, disable it by " "\#defining NPY\_NO\_DEPRECATED\_API NPY\_1\_7\_API\_VERSION" [-Wcpp]
+ \#warning "Using deprecated NumPy API, disable it by " \textbackslash{}
+  \^{}
+compiling Fortran sources
+Fortran f77 compiler: /usr/bin/gfortran -Wall -ffixed-form -fno-second-underscore -fPIC -O3 -funroll-loops
+Fortran f90 compiler: /usr/bin/gfortran -Wall -fno-second-underscore -fPIC -O3 -funroll-loops
+Fortran fix compiler: /usr/bin/gfortran -Wall -ffixed-form -fno-second-underscore -Wall -fno-second-underscore -fPIC -O3 -funroll-loops
+compile options: '-I/tmp/tmpWyCvx1/src.linux-x86\_64-2.7 -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'
+gfortran:f77: dprod.f
+/usr/bin/gfortran -Wall -Wall -shared /tmp/tmpWyCvx1/tmp/tmpWyCvx1/src.linux-x86\_64-2.7/dprodmodule.o /tmp/tmpWyCvx1/tmp/tmpWyCvx1/src.linux-x86\_64-2.7/fortranobject.o /tmp/tmpWyCvx1/dprod.o -lgfortran -o ./dprod.so
+Removing build directory /tmp/tmpWyCvx1
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{k+kn}{import} \PY{n+nn}{dprod}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{help}\PY{p}{(}\PY{n}{dprod}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Help on module dprod:
+
+NAME
+    dprod
+
+FILE
+    /home/rob/Desktop/scientific-python-lectures/dprod.so
+
+DESCRIPTION
+    This module 'dprod' is auto-generated with f2py (version:2).
+    Functions:
+      y = dprod(x,n=len(x))
+    .
+
+DATA
+    \_\_version\_\_ = '\$Revision: \$'
+    dprod = <fortran object>
+
+VERSION
+
+
+
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{dprod}\PY{o}{.}\PY{n}{dprod}\PY{p}{(}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{50}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:} 6.082818640342675e+62
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{c+c1}{\PYZsh{} compare to numpy}
+         \PY{n}{prod}\PY{p}{(}\PY{n}{arange}\PY{p}{(}\PY{l+m+mf}{1.0}\PY{p}{,}\PY{l+m+mf}{50.0}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:} 6.0828186403426752e+62
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{dprod}\PY{o}{.}\PY{n}{dprod}\PY{p}{(}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)} \PY{c+c1}{\PYZsh{} only the 5 first elements}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}16}]:} 120.0
+\end{Verbatim}
+        
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{xvec} \PY{o}{=} \PY{n}{rand}\PY{p}{(}\PY{l+m+mi}{500}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{timeit} \PY{n}{dprod}\PY{o}{.}\PY{n}{dprod}\PY{p}{(}\PY{n}{xvec}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1000000 loops, best of 3: 882 ns per loop
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{timeit} \PY{n}{xvec}\PY{o}{.}\PY{n}{prod}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100000 loops, best of 3: 4.45 µs per loop
+
+    \end{Verbatim}
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{c+c1}{\PYZsh{} simple python algorithm: example of a SLOW implementation}
+         \PY{c+c1}{\PYZsh{} Why? Because the loop is implemented in python.}
+         \PY{k}{def} \PY{n+nf}{py\PYZus{}dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{:}
+             \PY{n}{b} \PY{o}{=} \PY{n}{empty\PYZus{}like}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+             \PY{n}{b}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+             \PY{k}{for} \PY{n}{n} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{b}\PY{p}{[}\PY{n}{n}\PY{p}{]} \PY{o}{=} \PY{n}{b}\PY{p}{[}\PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{n}{a}\PY{p}{[}\PY{n}{n}\PY{p}{]}
+             \PY{k}{return} \PY{n}{b}
+\end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{o}{\PYZpc{}\PYZpc{}file} dcumsum.f
+         \PY{n}{c} \PY{n}{File} \PY{n}{dcumsum}\PY{o}{.}\PY{n}{f}
+                \PY{n}{subroutine} \PY{n}{dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n}{n}\PY{p}{)}
+                \PY{n}{double} \PY{n}{precision} \PY{n}{a}\PY{p}{(}\PY{n}{n}\PY{p}{)}
+                \PY{n}{double} \PY{n}{precision} \PY{n}{b}\PY{p}{(}\PY{n}{n}\PY{p}{)}
+                \PY{n}{integer} \PY{n}{n}
+         \PY{n}{cf2py}  \PY{n}{intent}\PY{p}{(}\PY{o+ow}{in}\PY{p}{)} \PY{p}{:}\PY{p}{:} \PY{n}{a}
+         \PY{n}{cf2py}  \PY{n}{intent}\PY{p}{(}\PY{n}{out}\PY{p}{)} \PY{p}{:}\PY{p}{:} \PY{n}{b}
+         \PY{n}{cf2py}  \PY{n}{intent}\PY{p}{(}\PY{n}{hide}\PY{p}{)} \PY{p}{:}\PY{p}{:} \PY{n}{n}
+         
+                \PY{n}{b}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)} \PY{o}{=} \PY{n}{a}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+                \PY{n}{do} \PY{l+m+mi}{100} \PY{n}{i}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{n}
+                    \PY{n}{b}\PY{p}{(}\PY{n}{i}\PY{p}{)} \PY{o}{=} \PY{n}{b}\PY{p}{(}\PY{n}{i}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)} \PY{o}{+} \PY{n}{a}\PY{p}{(}\PY{n}{i}\PY{p}{)}
+         \PY{l+m+mi}{100}    \PY{k}{continue}
+                \PY{n}{end}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting dcumsum.f
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{o}{!}f2py \PYZhy{}c dcumsum.f \PYZhy{}m dcumsum
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+running build
+running config\_cc
+unifing config\_cc, config, build\_clib, build\_ext, build commands --compiler options
+running config\_fc
+unifing config\_fc, config, build\_clib, build\_ext, build commands --fcompiler options
+running build\_src
+build\_src
+building extension "dcumsum" sources
+f2py options: []
+f2py:> /tmp/tmpfvrMl6/src.linux-x86\_64-2.7/dcumsummodule.c
+creating /tmp/tmpfvrMl6/src.linux-x86\_64-2.7
+Reading fortran codes{\ldots}
+	Reading file 'dcumsum.f' (format:fix,strict)
+Post-processing{\ldots}
+	Block: dcumsum
+			Block: dcumsum
+Post-processing (stage 2){\ldots}
+Building modules{\ldots}
+	Building module "dcumsum"{\ldots}
+		Constructing wrapper function "dcumsum"{\ldots}
+		  b = dcumsum(a)
+	Wrote C/API module "dcumsum" to file "/tmp/tmpfvrMl6/src.linux-x86\_64-2.7/dcumsummodule.c"
+  adding '/tmp/tmpfvrMl6/src.linux-x86\_64-2.7/fortranobject.c' to sources.
+  adding '/tmp/tmpfvrMl6/src.linux-x86\_64-2.7' to include\_dirs.
+copying /usr/lib/python2.7/dist-packages/numpy/f2py/src/fortranobject.c -> /tmp/tmpfvrMl6/src.linux-x86\_64-2.7
+copying /usr/lib/python2.7/dist-packages/numpy/f2py/src/fortranobject.h -> /tmp/tmpfvrMl6/src.linux-x86\_64-2.7
+build\_src: building npy-pkg config files
+running build\_ext
+customize UnixCCompiler
+customize UnixCCompiler using build\_ext
+customize Gnu95FCompiler
+Found executable /usr/bin/gfortran
+customize Gnu95FCompiler
+customize Gnu95FCompiler using build\_ext
+building 'dcumsum' extension
+compiling C sources
+C compiler: x86\_64-linux-gnu-gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC
+
+creating /tmp/tmpfvrMl6/tmp
+creating /tmp/tmpfvrMl6/tmp/tmpfvrMl6
+creating /tmp/tmpfvrMl6/tmp/tmpfvrMl6/src.linux-x86\_64-2.7
+compile options: '-I/tmp/tmpfvrMl6/src.linux-x86\_64-2.7 -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'
+x86\_64-linux-gnu-gcc: /tmp/tmpfvrMl6/src.linux-x86\_64-2.7/dcumsummodule.c
+In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
+                 from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
+                 from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/arrayobject.h:4,
+                 from /tmp/tmpfvrMl6/src.linux-x86\_64-2.7/fortranobject.h:13,
+                 from /tmp/tmpfvrMl6/src.linux-x86\_64-2.7/dcumsummodule.c:18:
+/usr/lib/python2.7/dist-packages/numpy/core/include/numpy/npy\_1\_7\_deprecated\_api.h:15:2: warning: \#warning "Using deprecated NumPy API, disable it by " "\#defining NPY\_NO\_DEPRECATED\_API NPY\_1\_7\_API\_VERSION" [-Wcpp]
+ \#warning "Using deprecated NumPy API, disable it by " \textbackslash{}
+  \^{}
+/tmp/tmpfvrMl6/src.linux-x86\_64-2.7/dcumsummodule.c:111:12: warning: ‘f2py\_size’ defined but not used [-Wunused-function]
+ static int f2py\_size(PyArrayObject* var, {\ldots})
+            \^{}
+x86\_64-linux-gnu-gcc: /tmp/tmpfvrMl6/src.linux-x86\_64-2.7/fortranobject.c
+In file included from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarraytypes.h:1761:0,
+                 from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/ndarrayobject.h:17,
+                 from /usr/lib/python2.7/dist-packages/numpy/core/include/numpy/arrayobject.h:4,
+                 from /tmp/tmpfvrMl6/src.linux-x86\_64-2.7/fortranobject.h:13,
+                 from /tmp/tmpfvrMl6/src.linux-x86\_64-2.7/fortranobject.c:2:
+/usr/lib/python2.7/dist-packages/numpy/core/include/numpy/npy\_1\_7\_deprecated\_api.h:15:2: warning: \#warning "Using deprecated NumPy API, disable it by " "\#defining NPY\_NO\_DEPRECATED\_API NPY\_1\_7\_API\_VERSION" [-Wcpp]
+ \#warning "Using deprecated NumPy API, disable it by " \textbackslash{}
+  \^{}
+compiling Fortran sources
+Fortran f77 compiler: /usr/bin/gfortran -Wall -ffixed-form -fno-second-underscore -fPIC -O3 -funroll-loops
+Fortran f90 compiler: /usr/bin/gfortran -Wall -fno-second-underscore -fPIC -O3 -funroll-loops
+Fortran fix compiler: /usr/bin/gfortran -Wall -ffixed-form -fno-second-underscore -Wall -fno-second-underscore -fPIC -O3 -funroll-loops
+compile options: '-I/tmp/tmpfvrMl6/src.linux-x86\_64-2.7 -I/usr/lib/python2.7/dist-packages/numpy/core/include -I/usr/include/python2.7 -c'
+gfortran:f77: dcumsum.f
+/usr/bin/gfortran -Wall -Wall -shared /tmp/tmpfvrMl6/tmp/tmpfvrMl6/src.linux-x86\_64-2.7/dcumsummodule.o /tmp/tmpfvrMl6/tmp/tmpfvrMl6/src.linux-x86\_64-2.7/fortranobject.o /tmp/tmpfvrMl6/dcumsum.o -lgfortran -o ./dcumsum.so
+Removing build directory /tmp/tmpfvrMl6
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{k+kn}{import} \PY{n+nn}{dcumsum}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{a} \PY{o}{=} \PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,}\PY{l+m+mf}{2.0}\PY{p}{,}\PY{l+m+mf}{3.0}\PY{p}{,}\PY{l+m+mf}{4.0}\PY{p}{,}\PY{l+m+mf}{5.0}\PY{p}{,}\PY{l+m+mf}{6.0}\PY{p}{,}\PY{l+m+mf}{7.0}\PY{p}{,}\PY{l+m+mf}{8.0}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{py\PYZus{}dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}25}]:} array([  1.,   3.,   6.,  10.,  15.,  21.,  28.,  36.])
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n}{dcumsum}\PY{o}{.}\PY{n}{dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}26}]:} array([  1.,   3.,   6.,  10.,  15.,  21.,  28.,  36.])
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n}{cumsum}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}27}]:} array([  1.,   3.,   6.,  10.,  15.,  21.,  28.,  36.])
+\end{Verbatim}
+        
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n}{a} \PY{o}{=} \PY{n}{rand}\PY{p}{(}\PY{l+m+mi}{10000}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{n}{timeit} \PY{n}{py\PYZus{}dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100 loops, best of 3: 4.83 ms per loop
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{n}{timeit} \PY{n}{dcumsum}\PY{o}{.}\PY{n}{dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100000 loops, best of 3: 12.2 µs per loop
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{n}{timeit} \PY{n}{a}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+10000 loops, best of 3: 27.4 µs per loop
+
+    \end{Verbatim}
+
+
+
+
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{o}{\PYZpc{}\PYZpc{}file} functions.c
+         
+         \PY{c+c1}{\PYZsh{}include \PYZlt{}stdio.h\PYZgt{}}
+         
+         \PY{n}{void} \PY{n}{hello}\PY{p}{(}\PY{n+nb}{int} \PY{n}{n}\PY{p}{)}\PY{p}{;}
+         
+         \PY{n}{double} \PY{n}{dprod}\PY{p}{(}\PY{n}{double} \PY{o}{*}\PY{n}{x}\PY{p}{,} \PY{n+nb}{int} \PY{n}{n}\PY{p}{)}\PY{p}{;}
+         
+         \PY{n}{void} \PY{n}{dcumsum}\PY{p}{(}\PY{n}{double} \PY{o}{*}\PY{n}{a}\PY{p}{,} \PY{n}{double} \PY{o}{*}\PY{n}{b}\PY{p}{,} \PY{n+nb}{int} \PY{n}{n}\PY{p}{)}\PY{p}{;}
+         
+         \PY{n}{void}
+         \PY{n}{hello}\PY{p}{(}\PY{n+nb}{int} \PY{n}{n}\PY{p}{)}
+         \PY{p}{\PYZob{}}
+             \PY{n+nb}{int} \PY{n}{i}\PY{p}{;}
+             
+             \PY{k}{for} \PY{p}{(}\PY{n}{i} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{;} \PY{n}{i} \PY{o}{\PYZlt{}} \PY{n}{n}\PY{p}{;} \PY{n}{i}\PY{o}{+}\PY{o}{+}\PY{p}{)}
+             \PY{p}{\PYZob{}}
+                 \PY{n}{printf}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{C says hello}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{;}
+             \PY{p}{\PYZcb{}}
+         \PY{p}{\PYZcb{}}
+         
+         
+         \PY{n}{double} 
+         \PY{n}{dprod}\PY{p}{(}\PY{n}{double} \PY{o}{*}\PY{n}{x}\PY{p}{,} \PY{n+nb}{int} \PY{n}{n}\PY{p}{)}
+         \PY{p}{\PYZob{}}
+             \PY{n+nb}{int} \PY{n}{i}\PY{p}{;}
+             \PY{n}{double} \PY{n}{y} \PY{o}{=} \PY{l+m+mf}{1.0}\PY{p}{;}
+             
+             \PY{k}{for} \PY{p}{(}\PY{n}{i} \PY{o}{=} \PY{l+m+mi}{0}\PY{p}{;} \PY{n}{i} \PY{o}{\PYZlt{}} \PY{n}{n}\PY{p}{;} \PY{n}{i}\PY{o}{+}\PY{o}{+}\PY{p}{)}
+             \PY{p}{\PYZob{}}
+                 \PY{n}{y} \PY{o}{*}\PY{o}{=} \PY{n}{x}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{;}
+             \PY{p}{\PYZcb{}}
+         
+             \PY{k}{return} \PY{n}{y}\PY{p}{;}
+         \PY{p}{\PYZcb{}}
+         
+         \PY{n}{void}
+         \PY{n}{dcumsum}\PY{p}{(}\PY{n}{double} \PY{o}{*}\PY{n}{a}\PY{p}{,} \PY{n}{double} \PY{o}{*}\PY{n}{b}\PY{p}{,} \PY{n+nb}{int} \PY{n}{n}\PY{p}{)}
+         \PY{p}{\PYZob{}}
+             \PY{n+nb}{int} \PY{n}{i}\PY{p}{;}
+             
+             \PY{n}{b}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{;}
+             \PY{k}{for} \PY{p}{(}\PY{n}{i} \PY{o}{=} \PY{l+m+mi}{1}\PY{p}{;} \PY{n}{i} \PY{o}{\PYZlt{}} \PY{n}{n}\PY{p}{;} \PY{n}{i}\PY{o}{+}\PY{o}{+}\PY{p}{)}
+             \PY{p}{\PYZob{}}
+                 \PY{n}{b}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n}{a}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{+} \PY{n}{b}\PY{p}{[}\PY{n}{i}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{;}
+             \PY{p}{\PYZcb{}}
+         \PY{p}{\PYZcb{}}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting functions.c
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{o}{!}gcc \PYZhy{}c \PYZhy{}Wall \PYZhy{}O2 \PYZhy{}Wall \PYZhy{}ansi \PYZhy{}pedantic \PYZhy{}fPIC \PYZhy{}o functions.o functions.c
+         \PY{o}{!}gcc \PYZhy{}o libfunctions.so \PYZhy{}shared functions.o
+\end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{o}{!}file libfunctions.so
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+libfunctions.so: ELF 64-bit LSB  shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=d68173ae6a804f703472af96f413b81a189db4b8, not stripped
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{o}{\PYZpc{}\PYZpc{}file} functions.py
+         
+         \PY{k+kn}{import} \PY{n+nn}{numpy}
+         \PY{k+kn}{import} \PY{n+nn}{ctypes}
+         
+         \PY{n}{\PYZus{}libfunctions} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{ctypeslib}\PY{o}{.}\PY{n}{load\PYZus{}library}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{libfunctions}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{.}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{\PYZus{}libfunctions}\PY{o}{.}\PY{n}{hello}\PY{o}{.}\PY{n}{argtypes} \PY{o}{=} \PY{p}{[}\PY{n}{ctypes}\PY{o}{.}\PY{n}{c\PYZus{}int}\PY{p}{]}
+         \PY{n}{\PYZus{}libfunctions}\PY{o}{.}\PY{n}{hello}\PY{o}{.}\PY{n}{restype}  \PY{o}{=}  \PY{n}{ctypes}\PY{o}{.}\PY{n}{c\PYZus{}void\PYZus{}p}
+         
+         \PY{n}{\PYZus{}libfunctions}\PY{o}{.}\PY{n}{dprod}\PY{o}{.}\PY{n}{argtypes} \PY{o}{=} \PY{p}{[}\PY{n}{numpy}\PY{o}{.}\PY{n}{ctypeslib}\PY{o}{.}\PY{n}{ndpointer}\PY{p}{(}\PY{n}{dtype}\PY{o}{=}\PY{n}{numpy}\PY{o}{.}\PY{n}{float}\PY{p}{)}\PY{p}{,} \PY{n}{ctypes}\PY{o}{.}\PY{n}{c\PYZus{}int}\PY{p}{]}
+         \PY{n}{\PYZus{}libfunctions}\PY{o}{.}\PY{n}{dprod}\PY{o}{.}\PY{n}{restype}  \PY{o}{=} \PY{n}{ctypes}\PY{o}{.}\PY{n}{c\PYZus{}double}
+         
+         \PY{n}{\PYZus{}libfunctions}\PY{o}{.}\PY{n}{dcumsum}\PY{o}{.}\PY{n}{argtypes} \PY{o}{=} \PY{p}{[}\PY{n}{numpy}\PY{o}{.}\PY{n}{ctypeslib}\PY{o}{.}\PY{n}{ndpointer}\PY{p}{(}\PY{n}{dtype}\PY{o}{=}\PY{n}{numpy}\PY{o}{.}\PY{n}{float}\PY{p}{)}\PY{p}{,} \PY{n}{numpy}\PY{o}{.}\PY{n}{ctypeslib}\PY{o}{.}\PY{n}{ndpointer}\PY{p}{(}\PY{n}{dtype}\PY{o}{=}\PY{n}{numpy}\PY{o}{.}\PY{n}{float}\PY{p}{)}\PY{p}{,} \PY{n}{ctypes}\PY{o}{.}\PY{n}{c\PYZus{}int}\PY{p}{]}
+         \PY{n}{\PYZus{}libfunctions}\PY{o}{.}\PY{n}{dcumsum}\PY{o}{.}\PY{n}{restype}  \PY{o}{=} \PY{n}{ctypes}\PY{o}{.}\PY{n}{c\PYZus{}void\PYZus{}p}
+         
+         \PY{k}{def} \PY{n+nf}{hello}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+             \PY{k}{return} \PY{n}{\PYZus{}libfunctions}\PY{o}{.}\PY{n}{hello}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{)}
+         
+         \PY{k}{def} \PY{n+nf}{dprod}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{n}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}\PY{p}{:}
+             \PY{k}{if} \PY{n}{n} \PY{o+ow}{is} \PY{k+kc}{None}\PY{p}{:}
+                 \PY{n}{n} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+             \PY{n}{x} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{asarray}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{numpy}\PY{o}{.}\PY{n}{float}\PY{p}{)}
+             \PY{k}{return} \PY{n}{\PYZus{}libfunctions}\PY{o}{.}\PY{n}{dprod}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{n+nb}{int}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{)}
+         
+         \PY{k}{def} \PY{n+nf}{dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{n}\PY{p}{)}\PY{p}{:}
+             \PY{n}{a} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{asarray}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{numpy}\PY{o}{.}\PY{n}{float}\PY{p}{)}
+             \PY{n}{b} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{empty}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{numpy}\PY{o}{.}\PY{n}{float}\PY{p}{)}
+             \PY{n}{\PYZus{}libfunctions}\PY{o}{.}\PY{n}{dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{,} \PY{n+nb}{int}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{)}
+             \PY{k}{return} \PY{n}{b}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting functions.py
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{o}{\PYZpc{}\PYZpc{}file} run\PYZus{}hello\PYZus{}c.py
+         
+         \PY{k+kn}{import} \PY{n+nn}{functions}
+         
+         \PY{n}{functions}\PY{o}{.}\PY{n}{hello}\PY{p}{(}\PY{l+m+mi}{3}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting run\_hello\_c.py
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{o}{!}python run\PYZus{}hello\PYZus{}c.py
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+C says hello
+C says hello
+C says hello
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}38}]:} \PY{k+kn}{import} \PY{n+nn}{functions}
+\end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}39}]:} \PY{n}{functions}\PY{o}{.}\PY{n}{dprod}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{]}\PY{p}{)} 
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}39}]:} 120.0
+\end{Verbatim}
+        
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}40}]:} \PY{n}{a} \PY{o}{=} \PY{n}{rand}\PY{p}{(}\PY{l+m+mi}{100000}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}41}]:} \PY{n}{res\PYZus{}c} \PY{o}{=} \PY{n}{functions}\PY{o}{.}\PY{n}{dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{)} 
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}42}]:} \PY{n}{res\PYZus{}fortran} \PY{o}{=} \PY{n}{dcumsum}\PY{o}{.}\PY{n}{dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}43}]:} \PY{n}{res\PYZus{}c} \PY{o}{\PYZhy{}} \PY{n}{res\PYZus{}fortran}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}43}]:} array([ 0.,  0.,  0., {\ldots},  0.,  0.,  0.])
+\end{Verbatim}
+        
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}44}]:} \PY{n}{timeit} \PY{n}{functions}\PY{o}{.}\PY{n}{dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n+nb}{len}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1000 loops, best of 3: 286 µs per loop
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}45}]:} \PY{n}{timeit} \PY{n}{dcumsum}\PY{o}{.}\PY{n}{dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+10000 loops, best of 3: 119 µs per loop
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}46}]:} \PY{n}{timeit} \PY{n}{a}\PY{o}{.}\PY{n}{cumsum}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1000 loops, best of 3: 261 µs per loop
+
+    \end{Verbatim}
+
+
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}47}]:} \PY{o}{\PYZpc{}\PYZpc{}file} cy\PYZus{}dcumsum.pyx
+         
+         \PY{n}{cimport} \PY{n}{numpy}
+         
+         \PY{k}{def} \PY{n+nf}{dcumsum}\PY{p}{(}\PY{n}{numpy}\PY{o}{.}\PY{n}{ndarray}\PY{p}{[}\PY{n}{numpy}\PY{o}{.}\PY{n}{float64\PYZus{}t}\PY{p}{,} \PY{n}{ndim}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{]} \PY{n}{a}\PY{p}{,} \PY{n}{numpy}\PY{o}{.}\PY{n}{ndarray}\PY{p}{[}\PY{n}{numpy}\PY{o}{.}\PY{n}{float64\PYZus{}t}\PY{p}{,} \PY{n}{ndim}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{]} \PY{n}{b}\PY{p}{)}\PY{p}{:}
+             \PY{n}{cdef} \PY{n+nb}{int} \PY{n}{i}\PY{p}{,} \PY{n}{n} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+             \PY{n}{b}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{=} \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+             \PY{k}{for} \PY{n}{i} \PY{k+kn}{from} \PY{l+m+mi}{1} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{n}{i} \PY{o}{\PYZlt{}} \PY{n}{n}\PY{p}{:}
+                 \PY{n}{b}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n}{b}\PY{p}{[}\PY{n}{i}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{+} \PY{n}{a}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+             \PY{k}{return} \PY{n}{b}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting cy\_dcumsum.pyx
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}48}]:} \PY{o}{\PYZpc{}\PYZpc{}file} setup.py
+         
+         \PY{k+kn}{from} \PY{n+nn}{distutils}\PY{n+nn}{.}\PY{n+nn}{core} \PY{k+kn}{import} \PY{n}{setup}
+         \PY{k+kn}{from} \PY{n+nn}{distutils}\PY{n+nn}{.}\PY{n+nn}{extension} \PY{k+kn}{import} \PY{n}{Extension}
+         \PY{k+kn}{from} \PY{n+nn}{Cython}\PY{n+nn}{.}\PY{n+nn}{Distutils} \PY{k+kn}{import} \PY{n}{build\PYZus{}ext}
+         
+         \PY{n}{setup}\PY{p}{(}
+             \PY{n}{cmdclass} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{build\PYZus{}ext}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{n}{build\PYZus{}ext}\PY{p}{\PYZcb{}}\PY{p}{,}
+             \PY{n}{ext\PYZus{}modules} \PY{o}{=} \PY{p}{[}\PY{n}{Extension}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{cy\PYZus{}dcumsum}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{cy\PYZus{}dcumsum.pyx}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+         \PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting setup.py
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}49}]:} \PY{o}{!}python setup.py build\PYZus{}ext \PYZhy{}\PYZhy{}inplace
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+running build\_ext
+cythoning cy\_dcumsum.pyx to cy\_dcumsum.c
+warning: /usr/local/lib/python2.7/dist-packages/Cython/Includes/numpy.pxd:869:17: Non-trivial type declarators in shared declaration (e.g. mix of pointers and values). Each pointer declaration should be on its own line.
+warning: /usr/local/lib/python2.7/dist-packages/Cython/Includes/numpy.pxd:869:24: Non-trivial type declarators in shared declaration (e.g. mix of pointers and values). Each pointer declaration should be on its own line.
+building 'cy\_dcumsum' extension
+x86\_64-linux-gnu-gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -I/usr/include/python2.7 -c cy\_dcumsum.c -o build/temp.linux-x86\_64-2.7/cy\_dcumsum.o
+In file included from /usr/include/python2.7/numpy/ndarraytypes.h:1761:0,
+                 from /usr/include/python2.7/numpy/ndarrayobject.h:17,
+                 from /usr/include/python2.7/numpy/arrayobject.h:4,
+                 from cy\_dcumsum.c:352:
+/usr/include/python2.7/numpy/npy\_1\_7\_deprecated\_api.h:15:2: warning: \#warning "Using deprecated NumPy API, disable it by " "\#defining NPY\_NO\_DEPRECATED\_API NPY\_1\_7\_API\_VERSION" [-Wcpp]
+ \#warning "Using deprecated NumPy API, disable it by " \textbackslash{}
+  \^{}
+In file included from /usr/include/python2.7/numpy/ndarrayobject.h:26:0,
+                 from /usr/include/python2.7/numpy/arrayobject.h:4,
+                 from cy\_dcumsum.c:352:
+/usr/include/python2.7/numpy/\_\_multiarray\_api.h:1629:1: warning: ‘\_import\_array’ defined but not used [-Wunused-function]
+ \_import\_array(void)
+ \^{}
+In file included from /usr/include/python2.7/numpy/ufuncobject.h:327:0,
+                 from cy\_dcumsum.c:353:
+/usr/include/python2.7/numpy/\_\_ufunc\_api.h:241:1: warning: ‘\_import\_umath’ defined but not used [-Wunused-function]
+ \_import\_umath(void)
+ \^{}
+x86\_64-linux-gnu-gcc -pthread -shared -Wl,-O1 -Wl,-Bsymbolic-functions -Wl,-Bsymbolic-functions -Wl,-z,relro -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -D\_FORTIFY\_SOURCE=2 -g -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security build/temp.linux-x86\_64-2.7/cy\_dcumsum.o -o /home/rob/Desktop/scientific-python-lectures/cy\_dcumsum.so
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}50}]:} \PY{k+kn}{import} \PY{n+nn}{cy\PYZus{}dcumsum}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}51}]:} \PY{n}{a} \PY{o}{=} \PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n+nb}{float}\PY{p}{)}
+         \PY{n}{b} \PY{o}{=} \PY{n}{empty\PYZus{}like}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+         \PY{n}{cy\PYZus{}dcumsum}\PY{o}{.}\PY{n}{dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{)}
+         \PY{n}{b}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}51}]:} array([  1.,   3.,   6.,  10.])
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}52}]:} \PY{n}{a} \PY{o}{=} \PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{2.0}\PY{p}{,} \PY{l+m+mf}{3.0}\PY{p}{,} \PY{l+m+mf}{4.0}\PY{p}{,} \PY{l+m+mf}{5.0}\PY{p}{,} \PY{l+m+mf}{6.0}\PY{p}{,} \PY{l+m+mf}{7.0}\PY{p}{,} \PY{l+m+mf}{8.0}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}53}]:} \PY{n}{b} \PY{o}{=} \PY{n}{empty\PYZus{}like}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+         \PY{n}{cy\PYZus{}dcumsum}\PY{o}{.}\PY{n}{dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{,} \PY{n}{b}\PY{p}{)}
+         \PY{n}{b}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}53}]:} array([  1.,   3.,   6.,  10.,  15.,  21.,  28.,  36.])
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}54}]:} \PY{n}{py\PYZus{}dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}54}]:} array([  1.,   3.,   6.,  10.,  15.,  21.,  28.,  36.])
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}55}]:} \PY{n}{a} \PY{o}{=} \PY{n}{rand}\PY{p}{(}\PY{l+m+mi}{100000}\PY{p}{)}
+         \PY{n}{b} \PY{o}{=} \PY{n}{empty\PYZus{}like}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}56}]:} \PY{n}{timeit} \PY{n}{py\PYZus{}dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+10 loops, best of 3: 50.1 ms per loop
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}57}]:} \PY{n}{timeit} \PY{n}{cy\PYZus{}dcumsum}\PY{o}{.}\PY{n}{dcumsum}\PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1000 loops, best of 3: 263 µs per loop
+
+    \end{Verbatim}
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}58}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} cythonmagic
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}62}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{cython}
+         
+         cimport numpy
+         
+         def cy\PYZus{}dcumsum2(numpy.ndarray[numpy.float64\PYZus{}t, ndim=1] a, numpy.ndarray[numpy.float64\PYZus{}t, ndim=1] b):
+             cdef int i, n = len(a)
+             b[0] = a[0]
+             for i from 1 \PYZlt{}= i \PYZlt{} n:
+                 b[i] = b[i\PYZhy{}1] + a[i]
+             return b
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}63}]:} \PY{n}{timeit} \PY{n}{cy\PYZus{}dcumsum2}\PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1000 loops, best of 3: 265 µs per loop
+
+    \end{Verbatim}
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}64}]:} \PY{o}{\PYZpc{}}\PY{k}{reload\PYZus{}ext} version\PYZus{}information
+         
+         \PY{o}{\PYZpc{}}\PY{k}{version\PYZus{}information} ctypes, Cython
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}64}]:}

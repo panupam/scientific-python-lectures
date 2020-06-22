@@ -1,0 +1,814 @@
+    
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+\end{Verbatim}
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k+kn}{import} \PY{n+nn}{multiprocessing}
+        \PY{k+kn}{import} \PY{n+nn}{os}
+        \PY{k+kn}{import} \PY{n+nn}{time}
+        \PY{k+kn}{import} \PY{n+nn}{numpy}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{def} \PY{n+nf}{task}\PY{p}{(}\PY{n}{args}\PY{p}{)}\PY{p}{:}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{PID =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{os}\PY{o}{.}\PY{n}{getpid}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, args =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{args}\PY{p}{)}
+            
+            \PY{k}{return} \PY{n}{os}\PY{o}{.}\PY{n}{getpid}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{args}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{task}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{test}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+PID = 28995 , args = test
+
+    \end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} (28995, 'test')
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{pool} \PY{o}{=} \PY{n}{multiprocessing}\PY{o}{.}\PY{n}{Pool}\PY{p}{(}\PY{n}{processes}\PY{o}{=}\PY{l+m+mi}{4}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{result} \PY{o}{=} \PY{n}{pool}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{n}{task}\PY{p}{,} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+PID = 29006 , args = 1
+PID = 29009 , args = 4
+PID = 29007 , args = 2
+PID = 29008 , args = 3
+PID = 29006 , args = 6
+PID = 29009 , args = 5
+PID = 29007 , args = 8
+PID = 29008 , args = 7
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{result}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} [(29006, 1),
+         (29007, 2),
+         (29008, 3),
+         (29009, 4),
+         (29009, 5),
+         (29006, 6),
+         (29008, 7),
+         (29007, 8)]
+\end{Verbatim}
+        
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{parallel} \PY{k+kn}{import} \PY{n}{Client}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{cli} \PY{o}{=} \PY{n}{Client}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{cli}\PY{o}{.}\PY{n}{ids}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}10}]:} [0, 1, 2, 3]
+\end{Verbatim}
+        
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{k}{def} \PY{n+nf}{getpid}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} return the unique ID of the current process \PYZdq{}\PYZdq{}\PYZdq{}}
+             \PY{k+kn}{import} \PY{n+nn}{os}
+             \PY{k}{return} \PY{n}{os}\PY{o}{.}\PY{n}{getpid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{c+c1}{\PYZsh{} first try it on the notebook process}
+         \PY{n}{getpid}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}12}]:} 28995
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} run it on one of the engines}
+         \PY{n}{cli}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{apply\PYZus{}sync}\PY{p}{(}\PY{n}{getpid}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} 30181
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{} run it on ALL of the engines at the same time}
+         \PY{n}{cli}\PY{p}{[}\PY{p}{:}\PY{p}{]}\PY{o}{.}\PY{n}{apply\PYZus{}sync}\PY{p}{(}\PY{n}{getpid}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:} [30181, 30182, 30183, 30185]
+\end{Verbatim}
+        
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{dview} \PY{o}{=} \PY{n}{cli}\PY{p}{[}\PY{p}{:}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n+nd}{@dview}\PY{o}{.}\PY{n}{parallel}\PY{p}{(}\PY{n}{block}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+         \PY{k}{def} \PY{n+nf}{dummy\PYZus{}task}\PY{p}{(}\PY{n}{delay}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} a dummy task that takes \PYZsq{}delay\PYZsq{} seconds to finish \PYZdq{}\PYZdq{}\PYZdq{}}
+             \PY{k+kn}{import} \PY{n+nn}{os}\PY{o}{,} \PY{n+nn}{time}
+         
+             \PY{n}{t0} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+             \PY{n}{pid} \PY{o}{=} \PY{n}{os}\PY{o}{.}\PY{n}{getpid}\PY{p}{(}\PY{p}{)}
+             \PY{n}{time}\PY{o}{.}\PY{n}{sleep}\PY{p}{(}\PY{n}{delay}\PY{p}{)}
+             \PY{n}{t1} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+             
+             \PY{k}{return} \PY{p}{[}\PY{n}{pid}\PY{p}{,} \PY{n}{t0}\PY{p}{,} \PY{n}{t1}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{c+c1}{\PYZsh{} generate random delay times for dummy tasks}
+         \PY{n}{delay\PYZus{}times} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{)}
+\end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{dummy\PYZus{}task}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{n}{delay\PYZus{}times}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}18}]:} [[30181, 1395044753.2096598, 1395044753.9150908],
+          [30182, 1395044753.2084103, 1395044753.4959202],
+          [30183, 1395044753.2113762, 1395044753.6453338],
+          [30185, 1395044753.2130392, 1395044754.1905618]]
+\end{Verbatim}
+        
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{k}{def} \PY{n+nf}{visualize\PYZus{}tasks}\PY{p}{(}\PY{n}{results}\PY{p}{)}\PY{p}{:}
+             \PY{n}{res} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{results}\PY{p}{)}
+             \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{res}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+             
+             \PY{n}{yticks} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+             \PY{n}{yticklabels} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+             \PY{n}{tmin} \PY{o}{=} \PY{n+nb}{min}\PY{p}{(}\PY{n}{res}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+             \PY{k}{for} \PY{n}{n}\PY{p}{,} \PY{n}{pid} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{numpy}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{n}{res}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{yticks}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{n}\PY{p}{)}
+                 \PY{n}{yticklabels}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{pid}\PY{p}{)}
+                 \PY{k}{for} \PY{n}{m} \PY{o+ow}{in} \PY{n}{numpy}\PY{o}{.}\PY{n}{where}\PY{p}{(}\PY{n}{res}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{==} \PY{n}{pid}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{:}
+                     \PY{n}{ax}\PY{o}{.}\PY{n}{add\PYZus{}patch}\PY{p}{(}\PY{n}{plt}\PY{o}{.}\PY{n}{Rectangle}\PY{p}{(}\PY{p}{(}\PY{n}{res}\PY{p}{[}\PY{n}{m}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{tmin}\PY{p}{,} \PY{n}{n}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.25}\PY{p}{)}\PY{p}{,}
+                                  \PY{n}{res}\PY{p}{[}\PY{n}{m}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{res}\PY{p}{[}\PY{n}{m}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{green}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}\PY{p}{)}
+                 
+             \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylim}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{n}\PY{o}{+}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{)}
+             \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{n+nb}{max}\PY{p}{(}\PY{n}{res}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{tmin} \PY{o}{+} \PY{l+m+mf}{0.}\PY{p}{)}
+             \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}yticks}\PY{p}{(}\PY{n}{yticks}\PY{p}{)}
+             \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}yticklabels}\PY{p}{(}\PY{n}{yticklabels}\PY{p}{)}
+             \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{PID}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+             \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{seconds}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{delay\PYZus{}times} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{l+m+mi}{64}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{result} \PY{o}{=} \PY{n}{dummy\PYZus{}task}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{n}{delay\PYZus{}times}\PY{p}{)}
+         \PY{n}{visualize\PYZus{}tasks}\PY{p}{(}\PY{n}{result}\PY{p}{)}
+\end{Verbatim}
+\begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Lecture-6B-HPC_files/Lecture-6B-HPC_32_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{lbview} \PY{o}{=} \PY{n}{cli}\PY{o}{.}\PY{n}{load\PYZus{}balanced\PYZus{}view}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n+nd}{@lbview}\PY{o}{.}\PY{n}{parallel}\PY{p}{(}\PY{n}{block}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+         \PY{k}{def} \PY{n+nf}{dummy\PYZus{}task\PYZus{}load\PYZus{}balanced}\PY{p}{(}\PY{n}{delay}\PY{p}{)}\PY{p}{:}
+             \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{} a dummy task that takes \PYZsq{}delay\PYZsq{} seconds to finish \PYZdq{}\PYZdq{}\PYZdq{}}
+             \PY{k+kn}{import} \PY{n+nn}{os}\PY{o}{,} \PY{n+nn}{time}
+         
+             \PY{n}{t0} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+             \PY{n}{pid} \PY{o}{=} \PY{n}{os}\PY{o}{.}\PY{n}{getpid}\PY{p}{(}\PY{p}{)}
+             \PY{n}{time}\PY{o}{.}\PY{n}{sleep}\PY{p}{(}\PY{n}{delay}\PY{p}{)}
+             \PY{n}{t1} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+             
+             \PY{k}{return} \PY{p}{[}\PY{n}{pid}\PY{p}{,} \PY{n}{t0}\PY{p}{,} \PY{n}{t1}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{result} \PY{o}{=} \PY{n}{dummy\PYZus{}task\PYZus{}load\PYZus{}balanced}\PY{o}{.}\PY{n}{map}\PY{p}{(}\PY{n}{delay\PYZus{}times}\PY{p}{)}
+         \PY{n}{visualize\PYZus{}tasks}\PY{p}{(}\PY{n}{result}\PY{p}{)}
+\end{Verbatim}
+\begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Lecture-6B-HPC_files/Lecture-6B-HPC_36_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+
+
+
+
+
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}25}]:} \PY{o}{\PYZpc{}\PYZpc{}file} mpitest.py
+         
+         \PY{k+kn}{from} \PY{n+nn}{mpi4py} \PY{k+kn}{import} \PY{n}{MPI}
+         
+         \PY{n}{comm} \PY{o}{=} \PY{n}{MPI}\PY{o}{.}\PY{n}{COMM\PYZus{}WORLD}
+         \PY{n}{rank} \PY{o}{=} \PY{n}{comm}\PY{o}{.}\PY{n}{Get\PYZus{}rank}\PY{p}{(}\PY{p}{)}
+         
+         \PY{k}{if} \PY{n}{rank} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+            \PY{n}{data} \PY{o}{=} \PY{p}{[}\PY{l+m+mf}{1.0}\PY{p}{,} \PY{l+m+mf}{2.0}\PY{p}{,} \PY{l+m+mf}{3.0}\PY{p}{,} \PY{l+m+mf}{4.0}\PY{p}{]}
+            \PY{n}{comm}\PY{o}{.}\PY{n}{send}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{n}{dest}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{tag}\PY{o}{=}\PY{l+m+mi}{11}\PY{p}{)}
+         \PY{k}{elif} \PY{n}{rank} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+            \PY{n}{data} \PY{o}{=} \PY{n}{comm}\PY{o}{.}\PY{n}{recv}\PY{p}{(}\PY{n}{source}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{tag}\PY{o}{=}\PY{l+m+mi}{11}\PY{p}{)}
+             
+         \PY{n+nb}{print} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rank =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{rank}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, data =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{data}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting mpitest.py
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}26}]:} \PY{o}{!}mpirun \PYZhy{}n \PY{l+m}{2} python mpitest.py
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+rank = 0 , data = [1.0, 2.0, 3.0, 4.0]
+rank = 1 , data = [1.0, 2.0, 3.0, 4.0]
+
+    \end{Verbatim}
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}27}]:} \PY{o}{\PYZpc{}\PYZpc{}file} mpi\PYZhy{}numpy\PYZhy{}array.py
+         
+         \PY{k+kn}{from} \PY{n+nn}{mpi4py} \PY{k+kn}{import} \PY{n}{MPI}
+         \PY{k+kn}{import} \PY{n+nn}{numpy}
+         
+         \PY{n}{comm} \PY{o}{=} \PY{n}{MPI}\PY{o}{.}\PY{n}{COMM\PYZus{}WORLD}
+         \PY{n}{rank} \PY{o}{=} \PY{n}{comm}\PY{o}{.}\PY{n}{Get\PYZus{}rank}\PY{p}{(}\PY{p}{)}
+         
+         \PY{k}{if} \PY{n}{rank} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+            \PY{n}{data} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+            \PY{n}{comm}\PY{o}{.}\PY{n}{Send}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{n}{dest}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,} \PY{n}{tag}\PY{o}{=}\PY{l+m+mi}{13}\PY{p}{)}
+         \PY{k}{elif} \PY{n}{rank} \PY{o}{==} \PY{l+m+mi}{1}\PY{p}{:}
+            \PY{n}{data} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{empty}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n}{numpy}\PY{o}{.}\PY{n}{float64}\PY{p}{)}
+            \PY{n}{comm}\PY{o}{.}\PY{n}{Recv}\PY{p}{(}\PY{n}{data}\PY{p}{,} \PY{n}{source}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{tag}\PY{o}{=}\PY{l+m+mi}{13}\PY{p}{)}
+             
+         \PY{n+nb}{print} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{rank =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{rank}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, data =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{data}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting mpi-numpy-array.py
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{o}{!}mpirun \PYZhy{}n \PY{l+m}{2} python mpi\PYZhy{}numpy\PYZhy{}array.py
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+rank = 0 , data = [ 0.71397658  0.37182268  0.25863587  0.08007216  0.50832534  0.80038331
+  0.90613024  0.99535428  0.11717776  0.48353805]
+rank = 1 , data = [ 0.71397658  0.37182268  0.25863587  0.08007216  0.50832534  0.80038331
+  0.90613024  0.99535428  0.11717776  0.48353805]
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{c+c1}{\PYZsh{} prepare some random data}
+         \PY{n}{N} \PY{o}{=} \PY{l+m+mi}{16}
+         \PY{n}{A} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{n}{N}\PY{p}{,} \PY{n}{N}\PY{p}{)}
+         \PY{n}{numpy}\PY{o}{.}\PY{n}{save}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{random\PYZhy{}matrix.npy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{A}\PY{p}{)}
+         \PY{n}{x} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{n}{N}\PY{p}{)}
+         \PY{n}{numpy}\PY{o}{.}\PY{n}{save}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{random\PYZhy{}vector.npy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{o}{\PYZpc{}\PYZpc{}file} mpi\PYZhy{}matrix\PYZhy{}vector.py
+         
+         \PY{k+kn}{from} \PY{n+nn}{mpi4py} \PY{k+kn}{import} \PY{n}{MPI}
+         \PY{k+kn}{import} \PY{n+nn}{numpy}
+         
+         \PY{n}{comm} \PY{o}{=} \PY{n}{MPI}\PY{o}{.}\PY{n}{COMM\PYZus{}WORLD}
+         \PY{n}{rank} \PY{o}{=} \PY{n}{comm}\PY{o}{.}\PY{n}{Get\PYZus{}rank}\PY{p}{(}\PY{p}{)}
+         \PY{n}{p} \PY{o}{=} \PY{n}{comm}\PY{o}{.}\PY{n}{Get\PYZus{}size}\PY{p}{(}\PY{p}{)}
+         
+         \PY{k}{def} \PY{n+nf}{matvec}\PY{p}{(}\PY{n}{comm}\PY{p}{,} \PY{n}{A}\PY{p}{,} \PY{n}{x}\PY{p}{)}\PY{p}{:}
+             \PY{n}{m} \PY{o}{=} \PY{n}{A}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{/} \PY{n}{p}
+             \PY{n}{y\PYZus{}part} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{A}\PY{p}{[}\PY{n}{rank} \PY{o}{*} \PY{n}{m}\PY{p}{:}\PY{p}{(}\PY{n}{rank}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{o}{*}\PY{n}{m}\PY{p}{]}\PY{p}{,} \PY{n}{x}\PY{p}{)}
+             \PY{n}{y} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+             \PY{n}{comm}\PY{o}{.}\PY{n}{Allgather}\PY{p}{(}\PY{p}{[}\PY{n}{y\PYZus{}part}\PY{p}{,}  \PY{n}{MPI}\PY{o}{.}\PY{n}{DOUBLE}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{n}{y}\PY{p}{,} \PY{n}{MPI}\PY{o}{.}\PY{n}{DOUBLE}\PY{p}{]}\PY{p}{)}
+             \PY{k}{return} \PY{n}{y}
+         
+         \PY{n}{A} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{random\PYZhy{}matrix.npy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{x} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{random\PYZhy{}vector.npy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{y\PYZus{}mpi} \PY{o}{=} \PY{n}{matvec}\PY{p}{(}\PY{n}{comm}\PY{p}{,} \PY{n}{A}\PY{p}{,} \PY{n}{x}\PY{p}{)}
+         
+         \PY{k}{if} \PY{n}{rank} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+             \PY{n}{y} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{A}\PY{p}{,} \PY{n}{x}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{y\PYZus{}mpi}\PY{p}{)}
+             \PY{n+nb}{print} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{sum(y \PYZhy{} y\PYZus{}mpi) =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{p}{(}\PY{n}{y} \PY{o}{\PYZhy{}} \PY{n}{y\PYZus{}mpi}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting mpi-matrix-vector.py
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}31}]:} \PY{o}{!}mpirun \PYZhy{}n \PY{l+m}{4} python mpi\PYZhy{}matrix\PYZhy{}vector.py
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[ 6.40342716  3.62421625  3.42334637  3.99854639  4.95852419  6.13378754
+  5.33319708  5.42803442  5.12403754  4.87891654  2.38660728  6.72030412
+  4.05218475  3.37415974  3.90903001  5.82330226]
+sum(y - y\_mpi) = 0.0
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}32}]:} \PY{c+c1}{\PYZsh{} prepare some random data}
+         \PY{n}{N} \PY{o}{=} \PY{l+m+mi}{128}
+         \PY{n}{a} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{n}{N}\PY{p}{)}
+         \PY{n}{numpy}\PY{o}{.}\PY{n}{save}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{random\PYZhy{}vector.npy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{a}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{o}{\PYZpc{}\PYZpc{}file} mpi\PYZhy{}psum.py
+         
+         \PY{k+kn}{from} \PY{n+nn}{mpi4py} \PY{k+kn}{import} \PY{n}{MPI}
+         \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+         
+         \PY{k}{def} \PY{n+nf}{psum}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{:}
+             \PY{n}{r} \PY{o}{=} \PY{n}{MPI}\PY{o}{.}\PY{n}{COMM\PYZus{}WORLD}\PY{o}{.}\PY{n}{Get\PYZus{}rank}\PY{p}{(}\PY{p}{)}
+             \PY{n}{size} \PY{o}{=} \PY{n}{MPI}\PY{o}{.}\PY{n}{COMM\PYZus{}WORLD}\PY{o}{.}\PY{n}{Get\PYZus{}size}\PY{p}{(}\PY{p}{)}
+             \PY{n}{m} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{a}\PY{p}{)} \PY{o}{/} \PY{n}{size}
+             \PY{n}{locsum} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{a}\PY{p}{[}\PY{n}{r}\PY{o}{*}\PY{n}{m}\PY{p}{:}\PY{p}{(}\PY{n}{r}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{o}{*}\PY{n}{m}\PY{p}{]}\PY{p}{)}
+             \PY{n}{rcvBuf} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{l+m+mf}{0.0}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+             \PY{n}{MPI}\PY{o}{.}\PY{n}{COMM\PYZus{}WORLD}\PY{o}{.}\PY{n}{Allreduce}\PY{p}{(}\PY{p}{[}\PY{n}{locsum}\PY{p}{,} \PY{n}{MPI}\PY{o}{.}\PY{n}{DOUBLE}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{n}{rcvBuf}\PY{p}{,} \PY{n}{MPI}\PY{o}{.}\PY{n}{DOUBLE}\PY{p}{]}\PY{p}{,} \PY{n}{op}\PY{o}{=}\PY{n}{MPI}\PY{o}{.}\PY{n}{SUM}\PY{p}{)}
+             \PY{k}{return} \PY{n}{rcvBuf}
+         
+         \PY{n}{a} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{load}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{random\PYZhy{}vector.npy}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{s} \PY{o}{=} \PY{n}{psum}\PY{p}{(}\PY{n}{a}\PY{p}{)}
+         
+         \PY{k}{if} \PY{n}{MPI}\PY{o}{.}\PY{n}{COMM\PYZus{}WORLD}\PY{o}{.}\PY{n}{Get\PYZus{}rank}\PY{p}{(}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+             \PY{n+nb}{print} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{sum =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{s}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{, numpy sum =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{a}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting mpi-psum.py
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{o}{!}mpirun \PYZhy{}n \PY{l+m}{4} python mpi\PYZhy{}psum.py
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+sum = 64.948311241 , numpy sum = 64.948311241
+
+    \end{Verbatim}
+
+
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{n}{N\PYZus{}core} \PY{o}{=} \PY{n}{multiprocessing}\PY{o}{.}\PY{n}{cpu\PYZus{}count}\PY{p}{(}\PY{p}{)}
+         
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{This system has }\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s2}{ cores}\PY{l+s+s2}{\PYZdq{}} \PY{o}{\PYZpc{}} \PY{n}{N\PYZus{}core}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+This system has 12 cores
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} cythonmagic
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{cython} \PYZhy{}f \PYZhy{}c\PYZhy{}fopenmp \PYZhy{}\PYZhy{}link\PYZhy{}args=\PYZhy{}fopenmp \PYZhy{}c\PYZhy{}g
+         
+         cimport cython
+         cimport numpy
+         from cython.parallel import prange, parallel
+         cimport openmp
+         
+         def cy\PYZus{}openmp\PYZus{}test():
+         
+             cdef int n, N
+         
+             \PYZsh{} release GIL so that we can use OpenMP
+             with nogil, parallel():
+                 N = openmp.omp\PYZus{}get\PYZus{}num\PYZus{}threads()
+                 n = openmp.omp\PYZus{}get\PYZus{}thread\PYZus{}num()
+                 with gil:
+                     print(\PYZdq{}Number of threads \PYZpc{}d: thread number \PYZpc{}d\PYZdq{} \PYZpc{} (N, n))
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}38}]:} \PY{n}{cy\PYZus{}openmp\PYZus{}test}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Number of threads 12: thread number 0
+Number of threads 12: thread number 10
+Number of threads 12: thread number 8
+Number of threads 12: thread number 4
+Number of threads 12: thread number 7
+Number of threads 12: thread number 3
+Number of threads 12: thread number 2
+Number of threads 12: thread number 1
+Number of threads 12: thread number 11
+Number of threads 12: thread number 9
+Number of threads 12: thread number 5
+Number of threads 12: thread number 6
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}39}]:} \PY{c+c1}{\PYZsh{} prepare some random data}
+         \PY{n}{N} \PY{o}{=} \PY{l+m+mi}{4} \PY{o}{*} \PY{n}{N\PYZus{}core}
+         
+         \PY{n}{M} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{n}{N}\PY{p}{,} \PY{n}{N}\PY{p}{)}
+         \PY{n}{x} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{n}{N}\PY{p}{)}
+         \PY{n}{y} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}40}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{cython}
+         
+         cimport cython
+         cimport numpy
+         import numpy
+         
+         @cython.boundscheck(False)
+         @cython.wraparound(False)
+         def cy\PYZus{}matvec(numpy.ndarray[numpy.float64\PYZus{}t, ndim=2] M, 
+                       numpy.ndarray[numpy.float64\PYZus{}t, ndim=1] x, 
+                       numpy.ndarray[numpy.float64\PYZus{}t, ndim=1] y):
+         
+             cdef int i, j, n = len(x)
+         
+             for i from 0 \PYZlt{}= i \PYZlt{} n:
+                 for j from 0 \PYZlt{}= j \PYZlt{} n:
+                     y[i] += M[i, j] * x[j]
+                     
+             return y
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}41}]:} \PY{c+c1}{\PYZsh{} check that we get the same results}
+         \PY{n}{y} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+         \PY{n}{cy\PYZus{}matvec}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+         \PY{n}{numpy}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{x}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{y}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}41}]:} array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+                 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+                 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+                 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}42}]:} \PY{o}{\PYZpc{}}\PY{k}{timeit} numpy.dot(M, x)
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100000 loops, best of 3: 2.93 µs per loop
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}43}]:} \PY{o}{\PYZpc{}}\PY{k}{timeit} cy\PYZus{}matvec(M, x, y)
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100000 loops, best of 3: 5.4 µs per loop
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}44}]:} \PY{o}{\PYZpc{}\PYZpc{}}\PY{k}{cython} \PYZhy{}f \PYZhy{}c\PYZhy{}fopenmp \PYZhy{}\PYZhy{}link\PYZhy{}args=\PYZhy{}fopenmp \PYZhy{}c\PYZhy{}g
+         
+         cimport cython
+         cimport numpy
+         from cython.parallel import parallel
+         cimport openmp
+         
+         @cython.boundscheck(False)
+         @cython.wraparound(False)
+         def cy\PYZus{}matvec\PYZus{}omp(numpy.ndarray[numpy.float64\PYZus{}t, ndim=2] M, 
+                           numpy.ndarray[numpy.float64\PYZus{}t, ndim=1] x, 
+                           numpy.ndarray[numpy.float64\PYZus{}t, ndim=1] y):
+         
+             cdef int i, j, n = len(x), N, r, m
+         
+             \PYZsh{} release GIL, so that we can use OpenMP
+             with nogil, parallel():
+                 N = openmp.omp\PYZus{}get\PYZus{}num\PYZus{}threads()
+                 r = openmp.omp\PYZus{}get\PYZus{}thread\PYZus{}num()
+                 m = n / N
+                 
+                 for i from 0 \PYZlt{}= i \PYZlt{} m:
+                     for j from 0 \PYZlt{}= j \PYZlt{} n:
+                         y[r * m + i] += M[r * m + i, j] * x[j]
+         
+             return y
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}45}]:} \PY{c+c1}{\PYZsh{} check that we get the same results}
+         \PY{n}{y} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+         \PY{n}{cy\PYZus{}matvec\PYZus{}omp}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+         \PY{n}{numpy}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{x}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{y}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}45}]:} array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+                 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+                 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,
+                 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])
+\end{Verbatim}
+        
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}46}]:} \PY{o}{\PYZpc{}}\PY{k}{timeit} numpy.dot(M, x)
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+100000 loops, best of 3: 2.95 µs per loop
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}47}]:} \PY{o}{\PYZpc{}}\PY{k}{timeit} cy\PYZus{}matvec\PYZus{}omp(M, x, y)
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+1000 loops, best of 3: 209 µs per loop
+
+    \end{Verbatim}
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}48}]:} \PY{n}{N\PYZus{}vec}  \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{25}\PY{p}{,} \PY{l+m+mi}{2000}\PY{p}{,} \PY{l+m+mi}{25}\PY{p}{)} \PY{o}{*} \PY{n}{N\PYZus{}core}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}49}]:} \PY{n}{duration\PYZus{}ref} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{N\PYZus{}vec}\PY{p}{)}\PY{p}{)}
+         \PY{n}{duration\PYZus{}cy} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{N\PYZus{}vec}\PY{p}{)}\PY{p}{)}
+         \PY{n}{duration\PYZus{}cy\PYZus{}omp} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{N\PYZus{}vec}\PY{p}{)}\PY{p}{)}
+         
+         \PY{k}{for} \PY{n}{idx}\PY{p}{,} \PY{n}{N} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{N\PYZus{}vec}\PY{p}{)}\PY{p}{:}
+             
+             \PY{n}{M} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{n}{N}\PY{p}{,} \PY{n}{N}\PY{p}{)}
+             \PY{n}{x} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{n}{N}\PY{p}{)}
+             \PY{n}{y} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{zeros\PYZus{}like}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+             
+             \PY{n}{t0} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+             \PY{n}{numpy}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{x}\PY{p}{)}
+             \PY{n}{duration\PYZus{}ref}\PY{p}{[}\PY{n}{idx}\PY{p}{]} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{t0}
+             
+             \PY{n}{t0} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+             \PY{n}{cy\PYZus{}matvec}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+             \PY{n}{duration\PYZus{}cy}\PY{p}{[}\PY{n}{idx}\PY{p}{]} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{t0}
+             
+             \PY{n}{t0} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+             \PY{n}{cy\PYZus{}matvec\PYZus{}omp}\PY{p}{(}\PY{n}{M}\PY{p}{,} \PY{n}{x}\PY{p}{,} \PY{n}{y}\PY{p}{)}
+             \PY{n}{duration\PYZus{}cy\PYZus{}omp}\PY{p}{[}\PY{n}{idx}\PY{p}{]} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZhy{}} \PY{n}{t0}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}50}]:} \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{12}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{loglog}\PY{p}{(}\PY{n}{N\PYZus{}vec}\PY{p}{,} \PY{n}{duration\PYZus{}ref}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{numpy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{loglog}\PY{p}{(}\PY{n}{N\PYZus{}vec}\PY{p}{,} \PY{n}{duration\PYZus{}cy}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cython}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{loglog}\PY{p}{(}\PY{n}{N\PYZus{}vec}\PY{p}{,} \PY{n}{duration\PYZus{}cy\PYZus{}omp}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{cython+openmp}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{ax}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}yscale}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{log}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{matrix\PYZhy{}vector multiplication duration}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+         \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{matrix size}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+\begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Lecture-6B-HPC_files/Lecture-6B-HPC_81_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}51}]:} \PY{p}{(}\PY{p}{(}\PY{n}{duration\PYZus{}ref} \PY{o}{/} \PY{n}{duration\PYZus{}cy\PYZus{}omp}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{10}\PY{p}{:}\PY{p}{]}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}51}]:} 3.0072232987815148
+\end{Verbatim}
+        
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}52}]:} \PY{n}{N\PYZus{}core}
+\end{Verbatim}
+
+            \begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}52}]:} 12
+\end{Verbatim}
+        
+
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}53}]:} \PY{o}{\PYZpc{}\PYZpc{}file} opencl\PYZhy{}dense\PYZhy{}mv.py
+         
+         \PY{k+kn}{import} \PY{n+nn}{pyopencl} \PY{k}{as} \PY{n+nn}{cl}
+         \PY{k+kn}{import} \PY{n+nn}{numpy}
+         \PY{k+kn}{import} \PY{n+nn}{time}
+         
+         \PY{c+c1}{\PYZsh{} problem size}
+         \PY{n}{n} \PY{o}{=} \PY{l+m+mi}{10000}
+         
+         \PY{c+c1}{\PYZsh{} platform}
+         \PY{n}{platform\PYZus{}list} \PY{o}{=} \PY{n}{cl}\PY{o}{.}\PY{n}{get\PYZus{}platforms}\PY{p}{(}\PY{p}{)}
+         \PY{n}{platform} \PY{o}{=} \PY{n}{platform\PYZus{}list}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+         
+         \PY{c+c1}{\PYZsh{} device}
+         \PY{n}{device\PYZus{}list} \PY{o}{=} \PY{n}{platform}\PY{o}{.}\PY{n}{get\PYZus{}devices}\PY{p}{(}\PY{p}{)}
+         \PY{n}{device} \PY{o}{=} \PY{n}{device\PYZus{}list}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+         
+         \PY{k}{if} \PY{k+kc}{False}\PY{p}{:}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Platform name:}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{platform}\PY{o}{.}\PY{n}{name}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Platform version:}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{platform}\PY{o}{.}\PY{n}{version}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Device name:}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{device}\PY{o}{.}\PY{n}{name}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Device type:}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n}{cl}\PY{o}{.}\PY{n}{device\PYZus{}type}\PY{o}{.}\PY{n}{to\PYZus{}string}\PY{p}{(}\PY{n}{device}\PY{o}{.}\PY{n}{type}\PY{p}{)}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Device memory: }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{device}\PY{o}{.}\PY{n}{global\PYZus{}mem\PYZus{}size}\PY{o}{/}\PY{o}{/}\PY{l+m+mi}{1024}\PY{o}{/}\PY{o}{/}\PY{l+m+mi}{1024}\PY{p}{)} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ MB}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Device max clock speed:}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{device}\PY{o}{.}\PY{n}{max\PYZus{}clock\PYZus{}frequency}\PY{p}{)} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ MHz}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Device compute units:}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{device}\PY{o}{.}\PY{n}{max\PYZus{}compute\PYZus{}units}\PY{p}{)}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} context}
+         \PY{n}{ctx} \PY{o}{=} \PY{n}{cl}\PY{o}{.}\PY{n}{Context}\PY{p}{(}\PY{p}{[}\PY{n}{device}\PY{p}{]}\PY{p}{)} \PY{c+c1}{\PYZsh{} or we can use cl.create\PYZus{}some\PYZus{}context()}
+         
+         \PY{c+c1}{\PYZsh{} command queue}
+         \PY{n}{queue} \PY{o}{=} \PY{n}{cl}\PY{o}{.}\PY{n}{CommandQueue}\PY{p}{(}\PY{n}{ctx}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} kernel}
+         \PY{n}{KERNEL\PYZus{}CODE} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}\PYZdq{}\PYZdq{}}
+         \PY{l+s+s2}{//}
+         \PY{l+s+s2}{// Matrix\PYZhy{}vector multiplication: r = m * v}
+         \PY{l+s+s2}{//}
+         \PY{l+s+s2}{\PYZsh{}define N }\PY{l+s+si}{\PYZpc{}(mat\PYZus{}size)d}
+         \PY{l+s+s2}{\PYZus{}\PYZus{}kernel}
+         \PY{l+s+s2}{void dmv\PYZus{}cl(\PYZus{}\PYZus{}global float *m, \PYZus{}\PYZus{}global float *v, \PYZus{}\PYZus{}global float *r)}
+         \PY{l+s+s2}{\PYZob{}}
+         \PY{l+s+s2}{    int i, gid = get\PYZus{}global\PYZus{}id(0);}
+         \PY{l+s+s2}{    }
+         \PY{l+s+s2}{    r[gid] = 0;}
+         \PY{l+s+s2}{    for (i = 0; i \PYZlt{} N; i++)}
+         \PY{l+s+s2}{    }\PY{l+s+s2}{\PYZob{}}
+         \PY{l+s+s2}{        r[gid] += m[gid * N + i] * v[i];}
+         \PY{l+s+s2}{    \PYZcb{}}
+         \PY{l+s+s2}{\PYZcb{}}
+         \PY{l+s+s2}{\PYZdq{}\PYZdq{}\PYZdq{}}
+         
+         \PY{n}{kernel\PYZus{}params} \PY{o}{=} \PY{p}{\PYZob{}}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{mat\PYZus{}size}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n}{n}\PY{p}{\PYZcb{}}
+         \PY{n}{program} \PY{o}{=} \PY{n}{cl}\PY{o}{.}\PY{n}{Program}\PY{p}{(}\PY{n}{ctx}\PY{p}{,} \PY{n}{KERNEL\PYZus{}CODE} \PY{o}{\PYZpc{}} \PY{n}{kernel\PYZus{}params}\PY{p}{)}\PY{o}{.}\PY{n}{build}\PY{p}{(}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} data}
+         \PY{n}{A} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{n}{n}\PY{p}{)}
+         \PY{n}{x} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{rand}\PY{p}{(}\PY{n}{n}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} host buffers}
+         \PY{n}{h\PYZus{}y} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{empty}\PY{p}{(}\PY{n}{numpy}\PY{o}{.}\PY{n}{shape}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{numpy}\PY{o}{.}\PY{n}{float32}\PY{p}{)}
+         \PY{n}{h\PYZus{}A} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{real}\PY{p}{(}\PY{n}{A}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{numpy}\PY{o}{.}\PY{n}{float32}\PY{p}{)}
+         \PY{n}{h\PYZus{}x} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{real}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n}{numpy}\PY{o}{.}\PY{n}{float32}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} device buffers}
+         \PY{n}{mf} \PY{o}{=} \PY{n}{cl}\PY{o}{.}\PY{n}{mem\PYZus{}flags}
+         \PY{n}{d\PYZus{}A\PYZus{}buf} \PY{o}{=} \PY{n}{cl}\PY{o}{.}\PY{n}{Buffer}\PY{p}{(}\PY{n}{ctx}\PY{p}{,} \PY{n}{mf}\PY{o}{.}\PY{n}{READ\PYZus{}ONLY} \PY{o}{|} \PY{n}{mf}\PY{o}{.}\PY{n}{COPY\PYZus{}HOST\PYZus{}PTR}\PY{p}{,} \PY{n}{hostbuf}\PY{o}{=}\PY{n}{h\PYZus{}A}\PY{p}{)}
+         \PY{n}{d\PYZus{}x\PYZus{}buf} \PY{o}{=} \PY{n}{cl}\PY{o}{.}\PY{n}{Buffer}\PY{p}{(}\PY{n}{ctx}\PY{p}{,} \PY{n}{mf}\PY{o}{.}\PY{n}{READ\PYZus{}ONLY} \PY{o}{|} \PY{n}{mf}\PY{o}{.}\PY{n}{COPY\PYZus{}HOST\PYZus{}PTR}\PY{p}{,} \PY{n}{hostbuf}\PY{o}{=}\PY{n}{h\PYZus{}x}\PY{p}{)}
+         \PY{n}{d\PYZus{}y\PYZus{}buf} \PY{o}{=} \PY{n}{cl}\PY{o}{.}\PY{n}{Buffer}\PY{p}{(}\PY{n}{ctx}\PY{p}{,} \PY{n}{mf}\PY{o}{.}\PY{n}{WRITE\PYZus{}ONLY}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{n}{h\PYZus{}y}\PY{o}{.}\PY{n}{nbytes}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} execute OpenCL code}
+         \PY{n}{t0} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+         \PY{n}{event} \PY{o}{=} \PY{n}{program}\PY{o}{.}\PY{n}{dmv\PYZus{}cl}\PY{p}{(}\PY{n}{queue}\PY{p}{,} \PY{n}{h\PYZus{}y}\PY{o}{.}\PY{n}{shape}\PY{p}{,} \PY{k+kc}{None}\PY{p}{,} \PY{n}{d\PYZus{}A\PYZus{}buf}\PY{p}{,} \PY{n}{d\PYZus{}x\PYZus{}buf}\PY{p}{,} \PY{n}{d\PYZus{}y\PYZus{}buf}\PY{p}{)}
+         \PY{n}{event}\PY{o}{.}\PY{n}{wait}\PY{p}{(}\PY{p}{)}
+         \PY{n}{cl}\PY{o}{.}\PY{n}{enqueue\PYZus{}copy}\PY{p}{(}\PY{n}{queue}\PY{p}{,} \PY{n}{h\PYZus{}y}\PY{p}{,} \PY{n}{d\PYZus{}y\PYZus{}buf}\PY{p}{)}
+         \PY{n}{t1} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+         
+         \PY{n+nb}{print} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{opencl elapsed time =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{p}{(}\PY{n}{t1}\PY{o}{\PYZhy{}}\PY{n}{t0}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} Same calculation with numpy}
+         \PY{n}{t0} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+         \PY{n}{y} \PY{o}{=} \PY{n}{numpy}\PY{o}{.}\PY{n}{dot}\PY{p}{(}\PY{n}{h\PYZus{}A}\PY{p}{,} \PY{n}{h\PYZus{}x}\PY{p}{)}
+         \PY{n}{t1} \PY{o}{=} \PY{n}{time}\PY{o}{.}\PY{n}{time}\PY{p}{(}\PY{p}{)}
+         
+         \PY{n+nb}{print} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{numpy elapsed time =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{p}{(}\PY{n}{t1}\PY{o}{\PYZhy{}}\PY{n}{t0}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} see if the results are the same}
+         \PY{n+nb}{print} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{max deviation =}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{numpy}\PY{o}{.}\PY{n}{abs}\PY{p}{(}\PY{n}{y}\PY{o}{\PYZhy{}}\PY{n}{h\PYZus{}y}\PY{p}{)}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Overwriting opencl-dense-mv.py
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}54}]:} \PY{o}{!}python opencl\PYZhy{}dense\PYZhy{}mv.py
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+/usr/local/lib/python2.7/dist-packages/pyopencl-2012.1-py2.7-linux-x86\_64.egg/pyopencl/\_\_init\_\_.py:36: CompilerWarning: Non-empty compiler output encountered. Set the environment variable PYOPENCL\_COMPILER\_OUTPUT=1 to see more.
+  "to see more.", CompilerWarning)
+opencl elapsed time = 0.0188570022583
+numpy elapsed time = 0.0755031108856
+max deviation = 0.0136719
+
+    \end{Verbatim}
+
+
+
+
+
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}55}]:} \PY{o}{\PYZpc{}}\PY{k}{load\PYZus{}ext} version\PYZus{}information
+         
+         \PY{o}{\PYZpc{}}\PY{k}{version\PYZus{}information} numpy, mpi4py, Cython
+\end{Verbatim}
+\texttt{\color{outcolor}Out[{\color{outcolor}55}]:}

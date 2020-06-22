@@ -1,5 +1,5 @@
 #
-# Build a PDF with all the notebooks 
+# Build a PDF with all the notebooks
 #
 TEMPLATE=chapter
 NOTEBOOKS=Lecture-0-Scientific-Computing-with-Python.ipynb \
@@ -18,9 +18,8 @@ all: latexfiles buildpdf
 
 latexfiles:
 	for notebook in $(NOTEBOOKS) ; do \
-		jupyter nbconvert --to latex --template $(TEMPLATE) $$notebook ; \
+		jupyter-nbconvert.exe --ExecutePreprocessor.timeout=600 --allow-errors --to latex --template $(TEMPLATE) $$notebook ; \
 	done
 
 buildpdf: latexfiles
-	pdflatex Scientific-Computing-with-Python.tex
-    
+	pdflatex.exe Scientific-Computing-with-Python.tex --quiet
